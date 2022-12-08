@@ -11,9 +11,13 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('admin.profile.profile');       
+        return view('admin.profile.index');       
     }
 
+    public function view_edit()
+    {
+        return view('admin.profile.view-edit');
+    }
     public function profile(Request $request)
     {
 
@@ -31,7 +35,7 @@ class ProfileController extends Controller
 
 
         $user->save();
-        return redirect()->route('profile')->with('success','Cập nhật thành công!');
+        return redirect()->route('view-edit')->with('success','Cập nhật thành công!');
 
     }
 }

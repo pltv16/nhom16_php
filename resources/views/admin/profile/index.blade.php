@@ -1,25 +1,25 @@
-@extends('layouts.frontend')
+@extends('layouts.master')
 
 @section('title','Tài khoản')
 
 @section('content')
 
-<div>
-  <a href="{{ route('f-profile') }}">
+ <div>
+  <a href="{{ route('profile') }}">
     <button type="submit" class="btn rounded-pill text-light px-4 light-300" style="margin: 10px; background-color: #4232c2;border-color: #ffff">Tài khoản</button>
   </a>
   <a href="#">
     <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
     font-weight: 300;">Quản lý bài viết</button>
   </a>
-  <a href="{{ route('f-view-edit') }}">
+  <a href="{{ route('view-edit') }}">
     <button type="submit" class="btn rounded-pill text-light px-4 light-300 " style="margin: 10px; background-color:  #4232c2;border-color: #ffff">Cập nhật tài khoản</button>
   </a>
   <a href="#">
     <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
     font-weight: 300;">Đổi mật khẩu</button>
   </a>
-</div>
+ </div>
 <div class="py-3"></div>
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
@@ -33,14 +33,6 @@
         <h5 class="card-header">Thông tin tài khoản</h5>
         <!-- Account -->
         <div class="card-body">
-
-          @if (session('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
-          @endif
-
-          <form id="formAccountSettings" action="{{ route('f-update-profile') }}" method="POST">
-            @csrf
-            @method('PUT')
           <div class="d-flex align-items-start align-items-sm-center gap-4">
             <img
               src="{{ asset('user/assets/img/avt.png') }}"
@@ -61,7 +53,7 @@
                     name="name"
                     value="{{ auth()->user()->name }}"
                     autofocus
-                  />
+                  disabled/>
                 </div>
                
                 <div class="mb-3 col-md-6">
@@ -73,7 +65,7 @@
                     name="email"
                     value="{{ auth()->user()->email }}"
                     placeholder="john.doe@example.com"
-                    />
+                    disabled/>
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="address" class="form-label">Địa chỉ</label>
@@ -83,7 +75,7 @@
                     name="address" 
                     placeholder="Address" 
                     value="{{ auth()->user()->address }}"
-                    />
+                    disabled/>
                   </div>
                 <div class="mb-3 col-md-6">
                   <label class="form-label" for="phoneNumber">Điện thoại</label>
@@ -96,16 +88,13 @@
                       class="form-control"
                       placeholder="202 555 0111"
                       value="{{ auth()->user()->phone }}"
-                      
+                      disabled
                     />
                   </div>
                 </div>
                 
               </div>
-              <div class="mt-2">
-                <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
-                <button type="reset" class="btn btn-outline-secondary">Trở lại</button>
-              </div>
+    
               @if (session('success'))
                 {{ session('success') }}
               @endif

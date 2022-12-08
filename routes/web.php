@@ -43,7 +43,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
     //Profile
     Route::get('profile', [ProfileController::class,'index'])->name('profile');
-    Route::put('profile', [ProfileController::class,'profile'])->name('update-profile');
+    Route::put('update-profile', [ProfileController::class,'profile'])->name('update-profile');
+    Route::get('view-edit', [ProfileController::class,'view_edit'])->name('view-edit');
 
     //User
     Route::get('users', [UserController::class,'index'])->name('users');

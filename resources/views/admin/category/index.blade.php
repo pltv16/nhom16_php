@@ -9,7 +9,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>Danh mục
-                <a href="{{ url('admin/add-category') }}" class="btn btn-primary btn-sm float-end">Thêm danh mục</a>
+                <a href="{{ route('add-category') }}" class="btn btn-primary btn-sm float-end">Thêm danh mục</a>
             </h4>
         </div>
         <div class="card-body">
@@ -35,11 +35,11 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>
-                            <a href="{{ url('admin/edit-category/'.$item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
+                            <a href="{{ route('edit-category'.$item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
                           
                         </td>
                         <td>
-                            <a href="{{ url('admin/delete-category/'.$item->id) }}"class="btn btn-danger">Xoá</a>
+                            <a href="{{ route('delete-category'.$item->id) }}"class="btn btn-danger">Xoá</a>
                         </td>
                     </tr>
                     @endforeach

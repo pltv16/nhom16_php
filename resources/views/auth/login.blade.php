@@ -17,9 +17,8 @@
   class="light-style customizer-hide"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="../admin/assets/"
-
-  data-template="vertical-menu-template-free"
+  data-assets-path="{{asset('admin/assets/')}}
+  "data-template="vertical-menu-template-free"
 >
   <head>
     <meta charset="utf-8" />
@@ -33,7 +32,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../admin/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{asset('admin/assets/img/favicon/favicon.ico')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,20 +43,20 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../admin/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/fonts/boxicons.css')}}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../admin/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../admin/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../admin/assets/css/demo.css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}" />
 
-    <link rel="stylesheet" href="../admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
-    <link rel="stylesheet" href="../admin/assets/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/css/pages/page-auth.css')}}" />
 
-    <script src="../admin/assets/vendor/js/helpers.js"></script>
+    <script src="{{asset('admin/assets/vendor/js/helpers.js')}}"></script>
 
-    <script src="../admin/assets/js/config.js"></script>
+    <script src="{{asset('admin/assets/js/config.js')}}"></script>
   </head>
 
   <body>
@@ -179,18 +178,18 @@
 
     <!-- Core JS -->
     <!-- build:js admin/assets/vendor/js/core.js -->
-    <script src="../admin/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../admin/assets/vendor/libs/popper/popper.js"></script>
-    <script src="../admin/assets/vendor/js/bootstrap.js"></script>
-    <script src="../admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{asset('admin/assets/vendor/libs/')}}jquery/jquery.js"></script>
+    <script src="{{asset('admin/assets/vendor/libs/')}}popper/popper.js"></script>
+    <script src="{{asset('admin/assets/vendor/js/bo')}}otstrap.js"></script>
+    <script src="{{asset('admin/assets/vendor/libs/')}}perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="../admin/assets/vendor/js/menu.js"></script>
+    <script src="{{asset('admin/assets/vendor/js/me')}}nu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="../admin/assets/js/main.js"></script>
+    <script src="{{asset('admin/assets/js/main.js">')}}</script>
 
     <!-- Page JS -->
 

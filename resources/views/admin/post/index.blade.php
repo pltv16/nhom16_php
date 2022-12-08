@@ -45,11 +45,11 @@
                         
                         <td>{{ $item->user->name }}</td>
                         <td>
-                            <a href="{{ url('admin/edit-post/'.$item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
+                            <a href="{{ route('edit-post'.$item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
                           
                         </td>
                         <td>
-                            <a href="{{ url('admin/delete-post/'.$item->id) }}"class="btn btn-danger">Xoá</a>
+                            <a href="{{ route('delete-post'.$item->id) }}"class="btn btn-danger">Xoá</a>
                         </td>
                     </tr>
                     @endforeach

@@ -8,20 +8,12 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4 class="">Cập nhật bài viết            
-                <a href="{{ url('admin/post') }}" class="btn btn-danger float-end">Quay lại</a>
+                <a href="{{ route('post') }}" class="btn btn-danger float-end">Quay lại</a>
             </h4>
 
         </div>
             <div class="card-body">
-
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div> 
-                    @endforeach
-                @endif
-
-            <form action="{{ url('admin/update-post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update-post'.$post->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
