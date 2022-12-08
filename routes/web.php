@@ -1,17 +1,17 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-//auth
+//AUTH
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-//admin
+//ADMIN
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\FPostController;
-//frontend
+//FRONTEND
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\FProfileController;
 
@@ -22,15 +22,15 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/timdothatlac', [FrontendController::class,'index'])->name('timdothatlac');
 
-//Register
+//REGISTER
 Route::get('register', [RegisterController::class,'showFormRegister'])->name('show-form-register')->middleware('guest');
 Route::post('register', [RegisterController::class,'register'])->name('register')->middleware('guest');
 
-//Login
+//LOGIN
 Route::get('login', [LoginController::class,'showFormLogin'])->name('show-form-login')->middleware('guest');
 Route::post('login', [LoginController::class,'login'])->name('login')->middleware('guest');
 
-//Logout
+//LOGOUT
 Route::get('logout', [LoginController::class,'logout'])->name('logout')->middleware('auth');
 
 //POST
@@ -41,12 +41,16 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     
     Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 
-    //Profile
+    //PROFILE
     Route::get('profile', [ProfileController::class,'index'])->name('profile');
-    Route::put('update-profile', [ProfileController::class,'profile'])->name('update-profile');
-    Route::get('view-edit', [ProfileController::class,'view_edit'])->name('view-edit');
+    Route::put('update-profile', [ProfileController::class,'updateProfile'])->name('update-profile');
+    Route::get('show-form-profile', [ProfileController::class,'showFormProfile'])->name('show-form-profile');
 
-    //User
+    //CHANGE PASSWORD
+    Route::get('show-form-password', [ProfileController::class,'showFormPassword'])->name('show-form-password');
+    Route::put('change-password', [ProfileController::class,'changePassword'])->name('change-password');
+
+    //USER
     Route::get('users', [UserController::class,'index'])->name('users');
 
     //CATEGORY
@@ -69,16 +73,13 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
 Route::prefix('frontend')->middleware('auth')->group(function () {
     
-    //Profile
+    //PROFILE
     Route::get('f-profile', [FProfileController::class,'index'])->name('f-profile');
-    Route::put('f-update-profile', [FProfileController::class,'profile'])->name('f-update-profile');
-    Route::get('f-view-edit', [FProfileController::class,'view_edit'])->name('f-view-edit');
+    Route::put('f-update-profile', [FProfileController::class,'updateProfile'])->name('f-update-profile');
+    Route::get('f-show-form-profile', [FProfileController::class,'showFormProfile'])->name('f-show-form-profile');
 
-    //Manage
+    //MANAGE
     Route::get('f-manage', [FProfileController::class,'index'])->name('f-manage');
-
-    // //User
-    // Route::get('users', [UserController::class,'index'])->name('users');
 
     // //CATEGORY
     // Route::get('category', [CategoryController::class,'index'])->name('category');
@@ -87,7 +88,8 @@ Route::prefix('frontend')->middleware('auth')->group(function () {
     // Route::get('edit-category/{id}', [CategoryController::class,'edit'])->name('edit-category');
     // Route::put('update-category/{id}', [CategoryController::class,'update'])->name('update-category');
     // Route::get('delete-category/{id}', [CategoryController::class,'destroy'])->name('delete-category');
-    
+
+    //POST
     Route::get('f-add-post', [FPostController::class,'create'])->name('f-add-post');
     Route::post('f-add-post', [FPostController::class,'store'])->name('f-add-post');
     Route::get('f-edit-post/{id}', [FPostController::class,'edit'])->name('f-edit-post');

@@ -1,21 +1,21 @@
-@extends('layouts.frontend')
+@extends('layouts.master')
 
 @section('title','Tài khoản')
 
 @section('content')
 
 <div>
-  <a href="{{ route('f-profile') }}">
+  <a href="{{ route('profile') }}">
     <button type="submit" class="btn rounded-pill text-light px-4 light-300" style="margin: 10px; background-color: #4232c2;border-color: #ffff">Tài khoản</button>
   </a>
   <a href="#">
     <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
     font-weight: 300;">Quản lý bài viết</button>
   </a>
-  <a href="{{ route('f-view-edit') }}">
+  <a href="{{ route('show-form-profile') }}">
     <button type="submit" class="btn rounded-pill text-light px-4 light-300 " style="margin: 10px; background-color:  #4232c2;border-color: #ffff">Cập nhật tài khoản</button>
   </a>
-  <a href="#">
+  <a href="{{ route('show-form-password') }}">
     <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
     font-weight: 300;">Đổi mật khẩu</button>
   </a>
@@ -31,14 +31,12 @@
       </ul>
       <div class="card mb-4">
         <h5 class="card-header">Thông tin tài khoản</h5>
-        <!-- Account -->
-        <div class="card-body">
-
-          @if (session('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
+       
+          @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
           @endif
 
-          <form id="formAccountSettings" action="{{ route('f-update-profile') }}" method="POST">
+          <form id="formAccountSettings" action="{{ route('update-profile') }}" method="POST">
             @csrf
             @method('PUT')
           <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -73,6 +71,7 @@
                     name="email"
                     value="{{ auth()->user()->email }}"
                     placeholder="john.doe@example.com"
+                    disabled
                     />
                 </div>
                 <div class="mb-3 col-md-6">
@@ -106,11 +105,10 @@
                 <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
                 <button type="reset" class="btn btn-outline-secondary">Trở lại</button>
               </div>
-              @if (session('success'))
-                {{ session('success') }}
-              @endif
+             
             
           </div>
+          
           </div>
         </div>
         <hr class="my-0" />

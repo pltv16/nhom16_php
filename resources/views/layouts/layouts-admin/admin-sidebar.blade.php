@@ -69,7 +69,7 @@
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
     <li class="menu-item active">
-      <a href="dashboard" class="menu-link">
+      <a href="{{ route('dashboard') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Trang chủ</div>
       </a>
@@ -83,7 +83,7 @@
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="profile" class="menu-link">
+          <a href="{{ route('profile') }}" class="menu-link">
             <div data-i18n="Without menu">Cập nhật tài khoản</div>
           </a>
         </li>

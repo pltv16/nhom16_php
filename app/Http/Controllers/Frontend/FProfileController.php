@@ -13,12 +13,12 @@ class FProfileController extends Controller
         return view('frontend.profile.index');       
     }
    
-    public function view_edit()
+    public function showFormProfile()
     {
-       return view('frontend.profile.view-edit');
+       return view('frontend.profile.update-profile');
     }
 
-    public function profile(Request $request)
+    public function updateProfile(Request $request)
     {
         $user= User::find(auth()->id());
         $user->name=$request->name;
@@ -27,7 +27,7 @@ class FProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('f-view-edit')->with('success','Cập nhật thành công!');
+        return redirect()->route('f-show-form-profile')->with('success','Cập nhật thành công!');
 
     }
 }

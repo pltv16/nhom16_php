@@ -12,7 +12,7 @@
     <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
     font-weight: 300;">Quản lý bài viết</button>
   </a>
-  <a href="{{ route('f-view-edit') }}">
+  <a href="{{ route('f-show-form-profile') }}">
     <button type="submit" class="btn rounded-pill text-light px-4 light-300 " style="margin: 10px; background-color:  #4232c2;border-color: #ffff">Cập nhật tài khoản</button>
   </a>
   <a href="#">
@@ -94,13 +94,8 @@
                 </div>
                 
               </div>
-              {{-- <div class="mt-2">
-                <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
-                <button type="reset" class="btn btn-outline-secondary">Trở lại</button>
-              </div> --}}
-              @if (session('success'))
-                {{ session('success') }}
-              @endif
+             
+             
             
           </div>
           </div>

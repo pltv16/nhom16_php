@@ -14,11 +14,11 @@ class ProfileController extends Controller
         return view('admin.profile.index');       
     }
 
-    public function view_edit()
+    public function showFormProfile()
     {
-        return view('admin.profile.view-edit');
+        return view('admin.profile.update-profile');
     }
-    public function profile(Request $request)
+    public function updateProfile(Request $request)
     {
 
         $user= User::find(auth()->id());
@@ -33,9 +33,23 @@ class ProfileController extends Controller
             $user->image = $filename;
         }
 
-
         $user->save();
-        return redirect()->route('view-edit')->with('success','Cập nhật thành công!');
+        return redirect()->route('show-form-profile')->with('success','Cập nhật thành công!');
 
     }
+
+    public function showFormPassword()
+    {
+        return view('admin.profile.password');
+    }
+    
+    // public function changePassword(Request $request)
+    // {
+    //     $user=User::find(auth()->id());
+    //     if($user->password != $request->password)
+    //     {
+
+    //     }
+
+    // }
 }
