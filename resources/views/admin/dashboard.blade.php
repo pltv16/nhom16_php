@@ -13,7 +13,7 @@
                                       <div class="card-title d-flex align-items-start justify-content-between">
                                         <div class="avatar flex-shrink-0">
                                           <img
-                                            src="../admin/assets/img/icons/unicons/chart-success.png"
+                                            src="{{ asset('admin/assets/img/icons/unicons/chart-success.png') }}"
                                             alt="chart success"
                                             class="rounded"
                                           />
@@ -63,7 +63,7 @@
                                       <div class="card-title d-flex align-items-start justify-content-between">
                                         <div class="avatar flex-shrink-0">
                                           <img
-                                            src="../admin/assets/img/icons/unicons/wallet-info.png"
+                                            src="{{ asset('admin/assets/img/icons/unicons/wallet-info.png')}}"
                                             alt="Credit Card"
                                             class="rounded"
                                           />
@@ -159,7 +159,7 @@
                                         <div class="card-body">
                                           <div class="card-title d-flex align-items-start justify-content-between">
                                             <div class="avatar flex-shrink-0">
-                                              <img src="../admin/assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                                              <img src="{{ asset('admin/assets/img/icons/unicons/cc-primary.png')}}" alt="Credit Card" class="rounded" />
                                             </div>
                                             <div class="dropdown">
                                               <button

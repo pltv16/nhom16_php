@@ -12,6 +12,11 @@ class FProfileController extends Controller
     {
         return view('frontend.profile.index');       
     }
+   
+    public function view_edit()
+    {
+       return view('frontend.profile.view-edit');
+    }
 
     public function profile(Request $request)
     {
@@ -21,7 +26,8 @@ class FProfileController extends Controller
         $user->phone=$request->phone;
 
         $user->save();
-        return redirect()->route('f-profile')->with('success','Cập nhật thành công!');
+
+        return redirect()->route('f-view-edit')->with('success','Cập nhật thành công!');
 
     }
 }

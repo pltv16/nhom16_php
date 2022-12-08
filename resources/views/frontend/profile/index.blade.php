@@ -4,8 +4,24 @@
 
 @section('content')
 
+ <div>
+  <a href="{{ route('f-profile') }}">
+    <button type="submit" class="btn rounded-pill text-light px-4 light-300" style="margin: 10px; background-color: #4232c2;border-color: #ffff">Tài khoản</button>
+  </a>
+  <a href="#">
+    <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
+    font-weight: 300;">Quản lý bài viết</button>
+  </a>
+  <a href="{{ route('f-view-edit') }}">
+    <button type="submit" class="btn rounded-pill text-light px-4 light-300 " style="margin: 10px; background-color:  #4232c2;border-color: #ffff">Cập nhật tài khoản</button>
+  </a>
+  <a href="#">
+    <button type="submit" class="btn rounded-pill px-4 light-300" style="margin: 10px; background-color: #ffff;border-color:#4232c2 " style="color: #0000;font-family: 'Open Sans', sans-serif !important;
+    font-weight: 300;">Đổi mật khẩu</button>
+  </a>
+ </div>
+<div class="py-3"></div>
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Cài đặt tài khoản /</span> Tài khoản</h4>
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-pills flex-column flex-md-row mb-3">
@@ -19,7 +35,7 @@
         <div class="card-body">
           <div class="d-flex align-items-start align-items-sm-center gap-4">
             <img
-              src="../admin/assets/img/avatars/1.png"
+              src="{{ asset('user/assets/img/avt.png') }}"
               alt="user-avatar"
               class="d-block rounded"
               height="100"
@@ -97,5 +113,4 @@
       
     </div>
   </div>
-</div>
 @endsection

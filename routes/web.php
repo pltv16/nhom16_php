@@ -69,10 +69,12 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 Route::prefix('frontend')->middleware('auth')->group(function () {
     
     //Profile
-    Route::get('profile', [FProfileController::class,'index'])->name('f-profile');
-    Route::put('profile', [FProfileController::class,'profile'])->name('f-update-profile');
+    Route::get('f-profile', [FProfileController::class,'index'])->name('f-profile');
+    Route::put('f-update-profile', [FProfileController::class,'profile'])->name('f-update-profile');
+    Route::get('f-view-edit', [FProfileController::class,'view_edit'])->name('f-view-edit');
+
     //Manage
-    Route::get('manage', [FProfileController::class,'index'])->name('f-manage');
+    Route::get('f-manage', [FProfileController::class,'index'])->name('f-manage');
 
     // //User
     // Route::get('users', [UserController::class,'index'])->name('users');

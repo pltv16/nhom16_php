@@ -18,6 +18,7 @@
              @if (session('message'))
                 <div class="alert alert-success">{{ session('message') }}</div>
               @endif
+              
               <table id="myDataTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>

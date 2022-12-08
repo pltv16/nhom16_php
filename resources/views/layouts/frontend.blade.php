@@ -28,9 +28,12 @@ https://templatemo.com/tm-561-purple-buzz
 <body>
         @include('layouts.layouts-user.frontend-navbar')
         <section class="service-wrapper py-3">
-            <div class="service-tag py-5 bg-secondary">
+            <div class="service-tag bg-secondary" style="padding: 30px">
                 <div class="col-md-12">
                     <ul class="nav d-flex justify-content-center">
+                        <li class="nav-item mx-lg-4">
+                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('timdothatlac') }}" >Trang chủ</a>
+                        </li>
                         <li class="nav-item mx-lg-4">
                             <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('f-add-post') }}" >Đăng bài</a>
                         </li>

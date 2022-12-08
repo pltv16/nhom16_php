@@ -21,7 +21,7 @@
                 @method('PUT')
             <div class="d-flex align-items-start align-items-sm-center gap-4">
               <img
-                src="../admin/assets/img/avatars/1.png"
+                src="{{ asset('user/assets/img/avt.png') }}"
                 alt="user-avatar"
                 class="d-block rounded"
                 height="100"

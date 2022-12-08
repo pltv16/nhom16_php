@@ -21,6 +21,14 @@ class ProfileController extends Controller
         $user->name=$request->name;
         $user->address=$request->address;
         $user->phone=$request->phone;
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $filename= time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/avt/', $filename);
+            $user->image = $filename;
+        }
+
 
         $user->save();
         return redirect()->route('profile')->with('success','Cập nhật thành công!');
