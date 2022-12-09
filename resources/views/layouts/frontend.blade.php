@@ -5,7 +5,7 @@
     <title>Tìm đồ thất lạc</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="{{asset('user/assets/img/apple-icon.png')}}">
+    <link rel="apple-touch-icon" href="{{ asset('user/assets/img/apple-icon.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Load Require CSS -->
     <link href="{{ asset('user/assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('user/assets/css/templatemo.css') }}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('user/assets/css/custom.css') }}">
-<!--
+    <!--
     
 TemplateMo 561 Purple Buzz
 
@@ -26,44 +26,49 @@ https://templatemo.com/tm-561-purple-buzz
 </head>
 
 <body>
-        @include('layouts.layouts-user.frontend-navbar')
-        <section class="service-wrapper py-3">
-            <div class="service-tag bg-secondary" style="padding: 30px">
-                <div class="col-md-12">
-                    <ul class="nav d-flex justify-content-center">
-                        <li class="nav-item mx-lg-4">
-                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('timdothatlac') }}" >Trang chủ</a>
-                        </li>
-                        <li class="nav-item mx-lg-4">
-                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('f-add-post') }}" >Đăng bài</a>
-                        </li>
-                        {{-- <li class="nav-item mx-lg-4">
+    @include('layouts.layouts-user.frontend-navbar')
+    <section class="service-wrapper py-3">
+        <div class="service-tag bg-secondary" style="padding: 30px">
+            <div class="col-md-12">
+                <ul class="nav d-flex justify-content-center">
+                    <li class="nav-item mx-lg-4">
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300"
+                            href="{{ route('timdothatlac') }}">Trang chủ</a>
+                    </li>
+                    <li class="nav-item mx-lg-4">
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300"
+                            href="{{ route('f-add-post') }}">Đăng bài</a>
+                    </li>
+                    {{-- <li class="nav-item mx-lg-4">
                             <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".graphic">Danh mục</a>
                         </li> --}}
-                        <li class="filter-btn nav-item mx-lg-4">
-                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".ui">Bài viết</a>
-                        </li>
-                        <li class="nav-item mx-lg-4">
-                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".branding">Mẹo tìm đồ</a>
-                        </li>
-                        <li class="nav-item mx-lg-4">
-                            <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".branding">Danh sách lừa đảo</a>
-                        </li>
-                    </ul>
-                </div>
+                    <li class="filter-btn nav-item mx-lg-4">
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
+                            data-filter=".ui">Bài viết</a>
+                    </li>
+                    <li class="nav-item mx-lg-4">
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
+                            data-filter=".branding">Mẹo tìm đồ</a>
+                    </li>
+                    <li class="nav-item mx-lg-4">
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
+                            data-filter=".branding">Danh sách lừa đảo</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <section class="container overflow-hidden py-5">
-            
-                @yield('content')
-        </section>
+        </div>
+    </section>
+    <section class="container overflow-hidden py-5">
 
-        @include('layouts.layouts-user.frontend-footer')
+        @yield('content')
+    </section>
+
+    @include('layouts.layouts-user.frontend-footer')
 
 
 
 
-      <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <script src="{{ asset('user/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Load jQuery require for isotope -->
     <script src="{{ asset('user/assets/js/jquery.min.js') }}"></script>

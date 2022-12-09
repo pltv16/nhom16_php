@@ -15,13 +15,13 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-       $user = new User();
-       $user->name=$request->name;
-       $user->email =$request->email;
-       $user->password =bcrypt($request->password);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
 
-       $user->save();
+        $user->save();
 
-       return redirect()->route('show-form-register')->with('success',"Đăng ký thành công");
+        return redirect()->route('show-form-register')->with('success', "Đăng ký thành công");
     }
 }

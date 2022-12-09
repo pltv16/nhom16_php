@@ -15,7 +15,7 @@
     </div>
     <div class="card-body">
 
-        <form action="{{ route('update-category'.$category->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/update-category/'.$category->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">

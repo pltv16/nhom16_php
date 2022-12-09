@@ -9,6 +9,6 @@ class FManageController extends Controller
 {
     public function index()
     {
-        return view('frontend.profile.manage');       
+        return view('frontend.profile.manage');
     }
 }

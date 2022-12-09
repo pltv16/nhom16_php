@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('admin.profile.index');       
+        return view('admin.profile.index');
     }
 
     public function showFormProfile()
@@ -21,35 +21,18 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
 
-        $user= User::find(auth()->id());
-        $user->name=$request->name;
-        $user->address=$request->address;
-        $user->phone=$request->phone;
-        if($request->hasfile('image'))
-        {
+        $user = User::find(auth()->id());
+        $user->name = $request->name;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        if ($request->hasfile('image')) {
             $file = $request->file('image');
-            $filename= time() . '.' . $file->getClientOriginalExtension();
+            $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/avt/', $filename);
             $user->image = $filename;
         }
 
         $user->save();
-        return redirect()->route('show-form-profile')->with('success','Cập nhật thành công!');
-
+        return redirect()->route('show-form-profile')->with('success', 'Cập nhật thành công!');
     }
-
-    public function showFormPassword()
-    {
-        return view('admin.profile.password');
-    }
-    
-    // public function changePassword(Request $request)
-    // {
-    //     $user=User::find(auth()->id());
-    //     if($user->password != $request->password)
-    //     {
-
-    //     }
-
-    // }
 }
