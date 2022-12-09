@@ -9,7 +9,7 @@
                     <div class="row gx-5">
 
                         @php
-                            $post = App\Models\Post::all();
+                            $post = DB::table('posts')->orderBy('created_at','DESC')->get();
                         @endphp
 
                         @foreach ($post as $item)

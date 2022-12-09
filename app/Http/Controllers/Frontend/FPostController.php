@@ -12,7 +12,7 @@ class FPostController extends Controller
 {
     public function post(Post $post)
     {
-        return view('frontend.post.detail', ['post' => $post]);
+        return view('frontend.post.detail', compact('post'));
     }
 
     public function create()
