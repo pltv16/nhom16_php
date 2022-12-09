@@ -143,10 +143,12 @@
                     autofocus
                   />
                 </div>
+                <p class="text-danger"><span class="error-message">{{ $errors->first('name') }}</span></p>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input type="text" class="form-control" id="email" name="email" placeholder="Nhập email" />
                 </div>
+                <p class="text-danger"><span class="error-message">{{ $errors->first('email') }}</span></p>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Mật khẩu</label>
                   <div class="input-group input-group-merge">
@@ -160,6 +162,7 @@
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  <p class="text-danger"><span class="error-message">{{ $errors->first('password') }}</span></p>
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Xác nhận mật khẩu</label>
@@ -174,6 +177,7 @@
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  <p class="text-danger"><span class="error-message">{{ $errors->first('confirm-password') }}</span></p>
                 </div>
 
                 <button class="btn btn-primary d-grid w-100">Đăng ký</button>

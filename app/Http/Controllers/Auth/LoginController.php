@@ -15,6 +15,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email'=>['required','email'],
+            'password'=>['required'],
+        ],[
+            'email.required'=>'Hãy nhập email',
+            'email.email'=>'Email chưa đúng định dạng(có kí tự @gmail)',
+            'password.required'=>'Hãy nhập password',
+        ]);
         if (Auth::attempt([
             'email'     => $request->email,
             'password'  => $request->password
