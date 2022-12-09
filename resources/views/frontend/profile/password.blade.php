@@ -46,9 +46,7 @@
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                             <div class="card-body">
                                 <div class="row">
-                                    @foreach ($errors->all() as $error)
-                                        <p class="text-danger">{{ $error }}</p>
-                                    @endforeach 
+                                    
                                     <div class="mb-3 form-password-toggle">
                                         @if (session('success'))
                                         <div class="alert alert-success">{{ session('success') }}</div>
@@ -64,6 +62,7 @@
                                                         class="bx bx-hide"></i></span>
                                                 </div>
                                         </div>
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('current_password') }}</span></p>
                                         <div class="mb-3 form-password-toggle">
                                             <label class="form-label" for="password">Mật khẩu mới</label>
                                             <div class="input-group input-group-merge">
@@ -75,6 +74,7 @@
                                                         class="bx bx-hide"></i></span>
                                             </div>
                                         </div>
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('new_password') }}</span></p>
                                         <div class="mb-3 form-password-toggle">
                                             <label class="form-label" for="password">Xác nhận mật khẩu</label>
                                             <div class="input-group input-group-merge">
@@ -86,6 +86,7 @@
                                                         class="bx bx-hide"></i></span>
                                             </div>
                                         </div>
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('new_confirm_password') }}</span></p>
                                         <div class="mt-2">
                                             <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
                                             <button type="reset" class="btn btn-outline-secondary">Trở lại</button>
