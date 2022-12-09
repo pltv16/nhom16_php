@@ -59,10 +59,10 @@
                                             <input class="form-control" type="text" id="firstName" name="name"
                                                 value="{{ auth()->user()->name }}" autofocus />
                                         </div>
-
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('name') }}</span></p>
                                         <div class="mb-3 col-md-6">
                                             <label for="email" class="form-label">E-mail</label>
-                                            <input class="form-control" type="text" id="email" name="email"
+                                            <input class="form-control" type="text" id="email" name="email" disabled
                                                 value="{{ auth()->user()->email }}" placeholder="john.doe@example.com" />
                                         </div>
                                         <div class="mb-3 col-md-6">
@@ -70,6 +70,7 @@
                                             <input type="text" class="form-control" id="address" name="address"
                                                 placeholder="Address" value="{{ auth()->user()->address }}" />
                                         </div>
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('address') }}</span></p>
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="phoneNumber">Điện thoại</label>
                                             <div class="input-group input-group-merge">
@@ -78,7 +79,7 @@
                                                     placeholder="202 555 0111" value="{{ auth()->user()->phone }}" />
                                             </div>
                                         </div>
-
+                                        <p class="text-danger"><span class="error-message">{{ $errors->first('phone') }}</span></p>
                                     </div>
                                     <div class="mt-2">
                                         <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>

@@ -22,7 +22,19 @@ class FPostController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $request->validate(
+            [   
+                'cate_id'=>['required'],
+                'title' => ['required'],
+                'content' => ['required'],
+            ],
+            [   
+                'cate_id'=>'Hãy chọn danh mục bài viết',
+                'title.required' => 'Hãy nhập tên tiêu đề',
+                'content.required' => 'Hãy nhập nội dung',
+            ],
+        );
         $filename = null;
         if ($request->hasfile('image')) {
             $file = $request->file('image');
