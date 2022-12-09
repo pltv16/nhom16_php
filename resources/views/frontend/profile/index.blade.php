@@ -20,11 +20,10 @@
             <button type="submit" class="btn rounded-pill text-light px-4 light-300 "
                 style="margin: 10px; background-color:  #4232c2;border-color: #ffff">Cập nhật tài khoản</button>
         </a>
-        <a href="#">
+        <a href="{{ route('f-show-form-password') }}">
             <button type="submit" class="btn rounded-pill px-4 light-300"
                 style="margin: 10px; background-color: #ffff;border-color:#4232c2 "
-                style="color: #0000;font-family: 'Open Sans', sans-serif !important;
-    font-weight: 300;">Đổi mật
+                style="color: #0000;font-family: 'Open Sans', sans-serif !important;font-weight: 300;">Đổi mật
                 khẩu</button>
         </a>
     </div>

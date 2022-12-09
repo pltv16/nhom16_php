@@ -1,20 +1,18 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-//AUTH
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-//ADMIN
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Frontend\FPostController;
-//FRONTEND
-use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\FProfileController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\FPasswordController;
 
 
 Route::get('/home', [HomeController::class, 'error'])->name('home');
@@ -37,9 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [LoginController::class,'logout'])->name('logout');
 
     //CHANGE PASSWORD
-    Route::get('show-form-password', [PasswordController::class,'showFormPassword'])->name('show-form-password');
-    Route::post('change-password', [PasswordController::class,'changePassword'])->name('change-password');
-
+    Route::get('f-show-form-password', [FPasswordController::class,'showFormPassword'])->name('f-show-form-password');
+    Route::post('f-change-password', [FPasswordController::class,'changePassword'])->name('f-change-password');
+    
     //PROFILE
     Route::get('f-profile', [FProfileController::class,'index'])->name('f-profile');
     Route::put('f-update-profile', [FProfileController::class,'updateProfile'])->name('f-update-profile');
@@ -74,6 +72,10 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     
     Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 
+    //CHANGE PASSWORD
+    Route::get('show-form-password', [PasswordController::class,'showFormPassword'])->name('show-form-password');
+    Route::post('change-password', [PasswordController::class,'changePassword'])->name('change-password');
+
     //PROFILE
     Route::get('profile', [ProfileController::class,'index'])->name('profile');
     Route::put('update-profile', [ProfileController::class,'updateProfile'])->name('update-profile');
@@ -97,10 +99,5 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::get('edit-post/{id}', [PostController::class,'edit'])->name('edit-post');
     Route::put('update-post/{id}', [PostController::class,'update'])->name('update-post');
     Route::get('delete-post/{id}', [PostController::class,'destroy'])->name('delete-post');
-
-});
-
-Route::prefix('frontend')->middleware('auth')->group(function () {
-    
 
 });

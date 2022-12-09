@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
 
-class PasswordController extends Controller
+class FPasswordController extends Controller
 {
     public function showFormPassword()
     {
-        return view('auth.password');
+        return view('frontend.profile.password');
     }
 
     public function changePassword(Request $request)
@@ -28,6 +28,6 @@ class PasswordController extends Controller
             ]
         );
         User::find(auth()->user()->id)->update(['password' => bcrypt($request->new_password)]);
-        return redirect()->route('show-form-password')->with('success', 'Đổi mật khẩu thành công!');
+        return redirect()->route('f-show-form-password')->with('success', 'Đổi mật khẩu thành công!');
     }
 }
