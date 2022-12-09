@@ -18,12 +18,13 @@ class PasswordController extends Controller
     {
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
+            'new_password' => ['required','min:8'],
             'new_confirm_password' => ['same:new_password'],
         ],
             [
                 'current_password.required' =>'Hãy nhập mật khẩu cũ',
                 'new_password.required' =>'Hãy nhập mật khẩu mới',
+                'new_password.min' =>'Mật khẩu tối thiểu 8 kí tự',
                 'new_confirm_password.same' =>'Xác nhận mật khẩu không trùng khớp',
             ]
         );

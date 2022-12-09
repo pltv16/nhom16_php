@@ -25,6 +25,14 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => ['required']
+            ],
+            [
+                'name.required'=>'Hãy nhập tên danh mục'
+            ]
+        );
         $category = new Category();
         $category->name = $request->name;
         $category->created_by = Auth::user()->id;
@@ -41,7 +49,14 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {   $request->validate(
+        [
+            'name' => ['required']
+        ],
+        [
+            'name.required'=>'Hãy nhập tên danh mục'
+        ]
+    );
         $category = Category::find($id);
         $category->name = $request->name;
         $category->created_by = Auth::user()->id;

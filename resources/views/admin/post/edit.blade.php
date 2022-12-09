@@ -29,14 +29,17 @@
                         <label for="">Tiêu đề</label>
                         <input type="text" name="title" value="{{ $post->title }}" class="form-control" />
                     </div>
+                    <p class="text-danger"><span class="error-message">{{ $errors->first('title') }}</span></p>
                     <div class="mb-3">
                         <label for="">Nội dung</label>
                         <input type="text" name="content" value="{{ $post->content }}" class="form-control" />
                     </div>
+                    <p class="text-danger"><span class="error-message">{{ $errors->first('content') }}</span></p>
                     <div class="mb-3">
                         <label for="">Hình ảnh</label>
                         <input type="file" name="image" value="{{ $post->image }}" class="form-control" />
                     </div>
+                    
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>

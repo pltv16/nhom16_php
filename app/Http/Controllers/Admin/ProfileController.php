@@ -19,8 +19,10 @@ class ProfileController extends Controller
         return view('admin.profile.update-profile');
     }
     public function updateProfile(Request $request)
-    {
-
+    {   
+        $request->validate([
+            
+        ]);
         $user = User::find(auth()->id());
         $user->name = $request->name;
         $user->address = $request->address;

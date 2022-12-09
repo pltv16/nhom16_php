@@ -25,6 +25,16 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title' => ['required'],
+                'content' => ['required'],
+            ],
+            [
+                'title.required' => 'Hãy nhập tên tiêu đề',
+                'content.required' => 'Hãy nhập nội dung',
+            ],
+        );
         $filename = null;
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -50,6 +60,18 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [   
+                'cate_id'=>['required'],
+                'title' => ['required'],
+                'content' => ['required'],
+            ],
+            [   
+                'cate_id'=>'Hãy chọn danh mục bài viết',
+                'title.required' => 'Hãy nhập tên tiêu đề',
+                'content.required' => 'Hãy nhập nội dung',
+            ],
+        );
         $post = Post::find($id);
         $post->cate_id = $request->cate_id;
         $post->title = $request->title;
