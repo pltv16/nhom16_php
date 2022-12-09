@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class PasswordController extends Controller
 {
     public function showFormPassword()
     {
-        return view('auth.password');
+        return view('admin.profile.password');
     }
 
     public function changePassword(Request $request)
