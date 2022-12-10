@@ -70,8 +70,9 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($id) {
+            $category->posts()->delete();
             $category->delete();
-            return redirect('admin/category')->with('message', 'Xoá danh mục thành công!');
+            return redirect('admin/category')->with('message', 'Xoá danh mục với bài viết thành công!');
         } else {
             return redirect('admin/category')->with('message', 'Danh mục không tồn tại');
         }

@@ -21,6 +21,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/timdothatlac', [FrontendController::class,'index'])->name('timdothatlac');
 
+//POST
+Route::get('post/detail/{post}', [FPostController::class,'post'])->name('f-post');
+
 //REGISTER
 Route::get('register', [RegisterController::class,'showFormRegister'])->name('show-form-register')->middleware('guest');
 Route::post('register', [RegisterController::class,'register'])->name('register')->middleware('guest');
@@ -62,11 +65,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('f-delete-post/{id}', [FPostController::class,'destroy'])->name('f-delete-post');
 
 });
-
-
-//POST
-Route::get('post/detail/{post}', [FPostController::class,'post'])->name('f-post');
-
 
 Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     
