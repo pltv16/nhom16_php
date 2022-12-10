@@ -3,6 +3,29 @@
 @section('title', 'Danh mục')
 
 @section('content')
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{{ url('admin/delete-category') }}" method="POST">
+            @csrf
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xoá danh mục</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="category_id" name="category_delete_id">
+            <h3>Bạn có thật sự muốn xoá danh mục?</h3>
+            <h5>Xoá danh mục đồng nghĩa với viêc sẽ xoá luôn bài viết chứa danh mục này.</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+            <button type="submit" class="btn btn-danger">Xoá</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
 
     <div class="container-fluid px-4">
 
@@ -39,7 +62,8 @@
 
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/delete-category/'.$item->id) }}"class="btn btn-danger">Xoá</a>
+                                    <button type="button" class="btn btn-danger deleteCategoryBtn"
+                                        value="{{ $item->id }}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -51,4 +75,17 @@
 
     </div>
 
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.deleteCategoryBtn').click(function(e) {
+                e.preventDefault();
+
+                var category_id = $(this).val();
+                $('#category_id').val(category_id);
+                $('#deleteModal').modal('show');
+            })
+        })
+    </script>
 @endsection

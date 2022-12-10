@@ -88,7 +88,7 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::post('add-category', [CategoryController::class,'store'])->name('add-category');
     Route::get('edit-category/{id}', [CategoryController::class,'edit'])->name('edit-category');
     Route::put('update-category/{id}', [CategoryController::class,'update'])->name('update-category');
-    Route::get('delete-category/{id}', [CategoryController::class,'destroy'])->name('delete-category');
+    Route::post('delete-category', [CategoryController::class,'destroy'])->name('delete-category');
     
     //POST
     Route::get('post', [PostController::class,'index'])->name('post');
@@ -96,6 +96,6 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::post('add-post', [PostController::class,'store'])->name('add-post');
     Route::get('edit-post/{id}', [PostController::class,'edit'])->name('edit-post');
     Route::put('update-post/{id}', [PostController::class,'update'])->name('update-post');
-    Route::get('delete-post/{id}', [PostController::class,'destroy'])->name('delete-post');
+    Route::post('delete-post', [PostController::class,'destroy'])->name('delete-post');
 
 });
