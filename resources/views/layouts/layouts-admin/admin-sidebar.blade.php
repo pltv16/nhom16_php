@@ -129,17 +129,18 @@
             </ul>
         </li>
         <!-- User interface -->
-        {{-- <li class="menu-item">
+        <li class="menu-item">
       <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-box"></i>
-        <div data-i18n="User interface">User interface</div>
+        <div data-i18n="User interface">Quản lý bình luận</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="ui-accordion.html" class="menu-link">
-            <div data-i18n="Accordion">Accordion</div>
+          <a href="{{ route('comment') }}" class="menu-link">
+            <div data-i18n="Accordion">Bình luận</div>
           </a>
         </li>
+         {{--
         <li class="menu-item">
           <a href="ui-alerts.html" class="menu-link">
             <div data-i18n="Alerts">Alerts</div>

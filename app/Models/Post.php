@@ -29,4 +29,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
+
+    public function comment()
+    {
+
+    return $this->hasMany(Comment::class,'post_id','id');
+    
+    }
 }   

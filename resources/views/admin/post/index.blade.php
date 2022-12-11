@@ -4,6 +4,29 @@
 
 @section('content')
 
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{{ url('admin/delete-post') }}" method="POST">
+            @csrf
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="post_id" name="post_delete_id">
+            <h5>Bạn có thật sự muốn xoá bài viết?</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+            <button type="submit" class="btn btn-danger">Xoá</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
     <div class="container-fluid px-4">
 
         <div class="card mt-4">
@@ -44,11 +67,13 @@
 
                                 <td>{{ $item->user->name }}</td>
                                 <td>
-                                    <a href="{{ url('admin/edit-post/'.$item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
+                                    <a href="{{ url('admin/edit-post/' . $item->id) }}" class="btn btn-primary">Chỉnh sửa</a>
 
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/delete-post/'.$item->id) }}"class="btn btn-danger">Xoá</a>
+                                    {{-- <a href="{{ url('admin/delete-post/'.$item->id) }}"class="btn btn-danger">Xoá</a> --}}
+                                    <button type="button" class="btn btn-danger deletePostBtn"
+                                        value="{{ $item->id }}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -60,4 +85,18 @@
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.deletePostBtn').click(function(e) {
+                e.preventDefault();
+
+                var post_id = $(this).val();
+                $('#post_id').val(post_id);
+                $('#deleteModal').modal('show');
+            })
+        })
+    </script>
 @endsection

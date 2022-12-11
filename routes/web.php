@@ -7,9 +7,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Frontend\FPostController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\FCommentController;
 use App\Http\Controllers\Frontend\FProfileController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\FPasswordController;
@@ -20,6 +22,10 @@ Route::get('/home', [HomeController::class, 'error'])->name('home');
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/timdothatlac', [FrontendController::class,'index'])->name('timdothatlac');
+
+//POST
+Route::get('f-detail-post/{id}', [FPostController::class,'detail'])->name('f-detail-post');
+
 
 //REGISTER
 Route::get('register', [RegisterController::class,'showFormRegister'])->name('show-form-register')->middleware('guest');
@@ -61,12 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('f-update-post/{id}', [FPostController::class,'update'])->name('f-update-post');
     Route::get('f-delete-post/{id}', [FPostController::class,'destroy'])->name('f-delete-post');
 
+    //COMMENT
+    Route::post('comments', [FCommentController::class,'store'])->name('f-comment');
+
 });
-
-
-//POST
-Route::get('post/detail/{post}', [FPostController::class,'post'])->name('f-post');
-
 
 Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     
@@ -84,13 +88,16 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     //USER
     Route::get('users', [UserController::class,'index'])->name('users');
 
+    //COMMENT
+    Route::get('comment', [CommentController::class,'index'])->name('comment');
+
     //CATEGORY
     Route::get('category', [CategoryController::class,'index'])->name('category');
     Route::get('add-category', [CategoryController::class,'create'])->name('add-category');
     Route::post('add-category', [CategoryController::class,'store'])->name('add-category');
     Route::get('edit-category/{id}', [CategoryController::class,'edit'])->name('edit-category');
     Route::put('update-category/{id}', [CategoryController::class,'update'])->name('update-category');
-    Route::get('delete-category/{id}', [CategoryController::class,'destroy'])->name('delete-category');
+    Route::post('delete-category', [CategoryController::class,'destroy'])->name('delete-category');
     
     //POST
     Route::get('post', [PostController::class,'index'])->name('post');
@@ -98,6 +105,6 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::post('add-post', [PostController::class,'store'])->name('add-post');
     Route::get('edit-post/{id}', [PostController::class,'edit'])->name('edit-post');
     Route::put('update-post/{id}', [PostController::class,'update'])->name('update-post');
-    Route::get('delete-post/{id}', [PostController::class,'destroy'])->name('delete-post');
+    Route::post('delete-post', [PostController::class,'destroy'])->name('delete-post');
 
 });

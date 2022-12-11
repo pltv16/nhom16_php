@@ -137,8 +137,9 @@
                   <label for="email" class="form-label">Email</label>
                   <input type="text" class="form-control" id="email" name="email" placeholder="Nhập email" />
                 </div>
+                <p class="text-danger"><span class="error-message">{{ $errors->first('email') }}</span></p>
                 <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Mật khẩu</label>
+                  <label class="form-label" for="password">Mật khẩu</label>   
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
@@ -148,8 +149,11 @@
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
+                    
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    
                   </div>
+                  <p class="text-danger"><span class="error-message">{{ $errors->first('password') }}</span></p>
                 </div>
                 
 

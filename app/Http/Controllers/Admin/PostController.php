@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Admin\PostFormRequest;
 
 class PostController extends Controller
 {
@@ -89,10 +89,10 @@ class PostController extends Controller
         return redirect('admin/post')->with('message', 'Cập nhật bài viết thành công');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $post = Post::find($id);
-        if ($id) {
+        $post = Post::find($request->post_delete_id);
+        if ($request->post_delete_id) {
             $post->delete();
             return redirect('admin/post')->with('message', 'Xoá bài viết thành công!');
         } else {

@@ -66,12 +66,13 @@ class CategoryController extends Controller
         return redirect('admin/category')->with('message', 'Cập nhật danh mục thành công');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $category = Category::find($id);
-        if ($id) {
+        $category = Category::find($request->category_delete_id);
+        if ($request->category_delete_id) {
+            $category->posts()->delete();
             $category->delete();
-            return redirect('admin/category')->with('message', 'Xoá danh mục thành công!');
+            return redirect('admin/category')->with('message', 'Xoá danh mục với bài viết thành công!');
         } else {
             return redirect('admin/category')->with('message', 'Danh mục không tồn tại');
         }
