@@ -12,6 +12,9 @@
                 </h4>
 
             </div>
+            @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
             <div class="card-body">
                 <form action="{{ url('admin/update-post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf

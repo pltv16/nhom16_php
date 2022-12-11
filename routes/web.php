@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('f-add-post', [FPostController::class,'store'])->name('f-add-post');
     Route::get('f-edit-post/{id}', [FPostController::class,'edit'])->name('f-edit-post');
     Route::put('f-update-post/{id}', [FPostController::class,'update'])->name('f-update-post');
-    Route::get('f-delete-post/{id}', [FPostController::class,'destroy'])->name('f-delete-post');
+    Route::post('f-delete-post', [FPostController::class,'destroy'])->name('f-delete-post');
 
 
     //COMMENT

@@ -1,8 +1,39 @@
 @extends('layouts.frontend')
 
 @section('content')
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{{ url('f-delete-post') }}" method="POST">
+            @csrf
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="post_id" name="post_delete_id">
+            <h5>Bạn có thật sự muốn xoá bài viết?</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+            <button type="submit" class="btn btn-danger">Xoá</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
+</div>
+
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
+            
+
+            <a href="{{ url('f-edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
+            
+            <button type="button" class="btn btn-danger deletePostBtn"
+            value="{{ $post->id }}">Delete</button>
+
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
                     <h3 class="feature-work-title h4 text-muted light-300">{{ $post->user->name }}</h3>
@@ -56,17 +87,18 @@
                 </div>
             </div><!-- End Comment Form -->
 
-            @forelse ($post->comment as $item)
                 <div class="row pb-4">
+                    @forelse ($post->comment as $item)
+
                     <div class="worksingle-comment-body col-md-8 m-auto">
 
                         <div class="d-flex">
 
                             <div>
                                 <img class="rounded-circle" src="{{ asset('user/assets/img/team-05.jpg') }}"
-                                    style="width: 50px;">
-                            </div>
-                            <div class="comment-body">
+                                        style="width: 50px;">
+                                </div>
+                                <div class="comment-body">
 
 
                                 <div class="comment-header d-flex justify-content-between ms-3">
@@ -87,6 +119,10 @@
                         </div>
                         
                     </div>
+                    @empty
+                    <h6>Không có bình luận</h6>
+                    @endforelse
+            
                 </div>
         </div>
         
@@ -94,8 +130,18 @@
         
         </div>
         <!-- End Comment -->
-        @empty
-        <h6>Không có bình luận</h6>
-        @endforelse
     </section>  
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.deletePostBtn').click(function(e) {
+                e.preventDefault();
+
+                var post_id = $(this).val();
+                $('#post_id').val(post_id);
+                $('#deleteModal').modal('show');
+            })
+        })
+    </script>
 @endsection

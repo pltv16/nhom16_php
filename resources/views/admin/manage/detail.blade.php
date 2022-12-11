@@ -22,7 +22,9 @@
         </form>
       </div>
     </div>
-  </div>
+
+</div>
+
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
             <a href="{{ url('admin/edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
