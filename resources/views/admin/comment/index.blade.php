@@ -9,7 +9,7 @@
         <div class="card mt-4">
 
             <div class="card-header">
-                <h4>Tài khoản người dùng</h4>
+                <h4>Bình luận</h4>
             </div>
             <div class="card-body">
 
@@ -17,24 +17,19 @@
                     <thead>
                         <tr>
                             <td>ID</td>
-                            <td>Tên tài khoản</td>
-                            <td>Email</td>
-                            <td>Chức vụ</td>
-                            <td>Địa chỉ</td>
-                            <td>Số điện thoại</td>
-
+                            <td>Tài khoản</td>
+                            <td>ID bài viết</td>
+                            <td>Nội dung</td>
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $item)
+                        @foreach ($comment as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>{{ $item->roles_as == '1' ? 'Admin' : 'User' }}</td>
-                                <td>{{ $item->address }}</td>
-                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->user->name}}</td>
+                                <td>{{ $item->post_id }}</td>
+                                <td>{{ $item->content }}</td>
                         @endforeach
 
                     </tbody>

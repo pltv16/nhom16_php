@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Frontend\FPostController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -86,6 +87,9 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
     //USER
     Route::get('users', [UserController::class,'index'])->name('users');
+
+    //COMMENT
+    Route::get('comment', [CommentController::class,'index'])->name('comment');
 
     //CATEGORY
     Route::get('category', [CategoryController::class,'index'])->name('category');

@@ -42,10 +42,10 @@ https://templatemo.com/tm-561-purple-buzz
                     {{-- <li class="nav-item mx-lg-4">
                             <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".graphic">Danh mục</a>
                         </li> --}}
-                    <li class="filter-btn nav-item mx-lg-4">
+                    {{-- <li class="filter-btn nav-item mx-lg-4">
                         <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
                             data-filter=".ui">Bài viết</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item mx-lg-4">
                         <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
                             data-filter=".branding">Mẹo tìm đồ</a>
