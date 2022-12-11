@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Frontend\FPostController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Frontend\FCommentController;
+use App\Http\Controllers\Frontend\FManageController;
 use App\Http\Controllers\Frontend\FProfileController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\FPasswordController;
@@ -50,15 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('f-show-form-profile', [FProfileController::class,'showFormProfile'])->name('f-show-form-profile');
 
     //MANAGE
-    Route::get('f-manage', [FProfileController::class,'index'])->name('f-manage');
-
-    // //CATEGORY
-    // Route::get('category', [CategoryController::class,'index'])->name('category');
-    // Route::get('add-category', [CategoryController::class,'create'])->name('add-category');
-    // Route::post('add-category', [CategoryController::class,'store'])->name('add-category');
-    // Route::get('edit-category/{id}', [CategoryController::class,'edit'])->name('edit-category');
-    // Route::put('update-category/{id}', [CategoryController::class,'update'])->name('update-category');
-    // Route::get('delete-category/{id}', [CategoryController::class,'destroy'])->name('delete-category');
+    Route::get('f-post-manage', [FManageController::class,'index'])->name('f-post-manage');
+    Route::get('f-detail-post/{id}', [FManageController::class,'detail'])->name('detail-post');
 
     //POST
     Route::get('f-add-post', [FPostController::class,'create'])->name('f-add-post');
@@ -67,8 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('f-update-post/{id}', [FPostController::class,'update'])->name('f-update-post');
     Route::get('f-delete-post/{id}', [FPostController::class,'destroy'])->name('f-delete-post');
 
+
     //COMMENT
-    Route::post('comments', [FCommentController::class,'store'])->name('f-comment');
+    Route::post('f-comment', [FCommentController::class,'store'])->name('f-comment');
 
 });
 
@@ -90,6 +86,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
     //COMMENT
     Route::get('comment', [CommentController::class,'index'])->name('comment');
+    //COMMENT
+    Route::post('comment', [CommentController::class,'store'])->name('comment');
 
     //CATEGORY
     Route::get('category', [CategoryController::class,'index'])->name('category');
@@ -106,5 +104,9 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::get('edit-post/{id}', [PostController::class,'edit'])->name('edit-post');
     Route::put('update-post/{id}', [PostController::class,'update'])->name('update-post');
     Route::post('delete-post', [PostController::class,'destroy'])->name('delete-post');
+
+    //POST-MANAGE
+    Route::get('post-manage',[ManageController::class,'index'])->name('post-manage');
+    Route::get('detail-post/{id}', [ManageController::class,'detail'])->name('detail-post');
 
 });

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -99,4 +98,6 @@ class PostController extends Controller
             return redirect('admin/post')->with('message', 'Bài viết không tồn tại');
         }
     }
+
+   
 }

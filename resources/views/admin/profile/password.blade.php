@@ -8,7 +8,7 @@
             <button type="submit" class="btn rounded-pill text-light px-4 light-300"
                 style="margin: 10px; background-color: #4232c2;border-color: #ffff">Tài khoản</button>
         </a>
-        <a href="#">
+        <a href="{{ route('post-manage') }}">
             <button type="submit" class="btn rounded-pill px-4 light-300"
                 style="margin: 10px; background-color: #ffff;border-color:#4232c2 "
                 style="color: #0000;font-family: 'Open Sans', sans-serif !important;font-weight: 300;">Quản lý bài

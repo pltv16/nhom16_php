@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-assets-path="../admin/assets/"
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-assets-path="{{ asset('admin/assets/') }}"
     data-theme="theme-default" data-template="vertical-menu-template-free">
 
 <head>
@@ -12,7 +12,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../admin/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/img/favicon/favicon.ico') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,17 +53,17 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('layouts.layouts-admin.admin-navbar')
+                @include('layouts.layouts-admin.admin-navbar') 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                         @yield('content')
                     </div>
-
-                    @include('layouts.layouts-admin.admin-footer')
+                    {{-- @include('layouts.layouts-admin.admin-footer') --}}
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -90,4 +90,5 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     @yield('scripts')
+
 </body>
