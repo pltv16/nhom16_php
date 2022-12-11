@@ -11,7 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class FCommentController extends Controller
 {
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+            'content'=>['required'],
+        ],
+        ['content.required'=>'Hãy nhập nội dung bình luận']
+        );
         $comment = new Comment();
         $comment->post_id = $request->post_id;
         $comment->user_id = Auth::user()->id;

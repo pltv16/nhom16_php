@@ -30,7 +30,7 @@ class LoginController extends Controller
             return redirect()->route('timdothatlac');
         }
 
-        return redirect()->route('show-form-login')->with('error', "Email hoặc mật khẩu không chính xác");
+        return redirect()->route('show-form-login')->with('success', "Email hoặc mật khẩu không chính xác");
     }
 
     public function logout()

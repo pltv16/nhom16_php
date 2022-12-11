@@ -166,9 +166,9 @@
                   <span>Đăng ký</span>
                 </a>
               </p>
-              @if (session('error'))
-{{ session('error') }}
-@endif
+              @if (session('success'))
+                            <div class="alert alert-danger">{{ session('success') }}</div>
+                        @endif
             </div>
             
           </div>
