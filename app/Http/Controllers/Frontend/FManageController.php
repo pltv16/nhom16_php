@@ -12,7 +12,7 @@ class FManageController extends Controller
 {
     public function index()
     {
-        $post = DB::table('posts')->where('created_by', Auth::user()->id)->get();
+        $post = DB::table('posts')->where(['created_by' => Auth::user()->id, 'deleted_at' =>null])->get();
         return view('frontend.manage.index',compact('post'));
     }
 
