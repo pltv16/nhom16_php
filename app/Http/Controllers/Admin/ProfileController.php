@@ -21,14 +21,9 @@ class ProfileController extends Controller
     {   
         $request->validate([
             'name'=>['required'],
-            'address'=>['required'],
-            'phone'=>['required','min:10']
         ],
         [
             'name.required'=>'Hãy nhập tên',
-            'address.required'=>'Hãy nhập địa chỉ',
-            'phone.required'=>'Hãy nhập số điện thoại',
-            'phone.min'=>'Hãy nhập đúng định dạng số điện thoại(Có 10 số)'
         ]
     );
         $user = User::find(auth()->id());

@@ -63,7 +63,7 @@
             <div class="row pb-4">
 
                 <div class="worksingle-comment-footer col-lg-8 m-auto">
-                    <form class="col-md-12 m-auto" method="POST" action="{{ url('comment') }}"
+                    <form class="col-md-12 m-auto" method="POST" action="{{ url('admin/comment') }}"
                         enctype="multipart/form-data">
                         @csrf
                         @if (session('success'))
