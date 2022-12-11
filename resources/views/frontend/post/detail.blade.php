@@ -25,6 +25,7 @@
 
         </div>
         {{-- comment --}}
+       
         <div>
             <div class="row justify-content-center">
                 <div class="worksingle-comment-heading col-8 m-auto pb-3">
@@ -44,7 +45,7 @@
                             <textarea class="form-control" name="content"></textarea>
                             <input type=hidden name=post_id value="{{ $post->id }}" />
                         </div>
-
+                        <p class="text-danger"><span class="error-message">{{ $errors->first('content') }}</span></p>
                         <div class="form-row pt-2">
                             <div class="col-md-12 col-10 text-end">
                                 <button type="submit"

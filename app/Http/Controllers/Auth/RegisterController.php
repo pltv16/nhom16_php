@@ -18,14 +18,15 @@ class RegisterController extends Controller
         $request->validate([
             'name'=>['required'],
             'email'=>['required','email'],
-            'password'=>['required'],
+            'password'=>['required', 'min:8'],
             'confirm-password'=>['required'],
             'confirm-password' => ['same:password'],
         ],[ 
             'name.required'=>'Hãy nhập Tên',
             'email.required'=>'Hãy nhập email',
             'email.email'=>'Email chưa đúng định dạng(có kí tự @gmail)',
-            'password.required'=>'Hãy nhập password',
+            'password.required'=>'Hãy nhập mật khẩu',
+            'password.min'=>'Mật khẩu tối thiểu 8 kí tự',
             'confirm-password.same' =>'Xác nhận mật khẩu không trùng khớp',
         ]);
         $user = new User();

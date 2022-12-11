@@ -60,7 +60,7 @@
                         </a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}">
-                            {{ __('Logout') }}
+                            Đăng xuất
                         </a>
                     </div>
 

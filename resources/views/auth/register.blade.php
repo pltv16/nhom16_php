@@ -190,8 +190,8 @@
                 </a>
               </p>
               @if (session('success'))
-{{ session('success') }}
-@endif
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
             </div>
           </div>
           <!-- Register Card -->
