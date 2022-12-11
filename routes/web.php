@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Frontend\FPostController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\FCommentController;
 use App\Http\Controllers\Frontend\FProfileController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\FPasswordController;
@@ -22,7 +23,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/timdothatlac', [FrontendController::class,'index'])->name('timdothatlac');
 
 //POST
-Route::get('post/detail/{post}', [FPostController::class,'post'])->name('f-post');
+Route::get('f-detail-post/{id}', [FPostController::class,'detail'])->name('f-detail-post');
+
 
 //REGISTER
 Route::get('register', [RegisterController::class,'showFormRegister'])->name('show-form-register')->middleware('guest');
@@ -63,6 +65,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('f-edit-post/{id}', [FPostController::class,'edit'])->name('f-edit-post');
     Route::put('f-update-post/{id}', [FPostController::class,'update'])->name('f-update-post');
     Route::get('f-delete-post/{id}', [FPostController::class,'destroy'])->name('f-delete-post');
+
+    //COMMENT
+    Route::post('comments', [FCommentController::class,'store'])->name('f-comment');
 
 });
 

@@ -24,56 +24,74 @@
             </div>
 
         </div>
-        <div class="row justify-content-center">
-            <div class="worksingle-comment-heading col-8 m-auto pb-3">
-                <h4 class="h5">Bình luận</h4>
-            </div>
-        </div>
-        <div class="row pb-4">
-            <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <form class="col-md-12 m-auto" method="POST" action="#" role="form">
-
-                    <div class="form-group">
-                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage"></label>
-                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="inputmessage"
-                            placeholder="Viết bình luận..." rows="1"></textarea>
-                    </div>
-
-                    <div class="form-row pt-2">
-                        <div class="col-md-12 col-10 text-end">
-                            <button type="submit"
-                                class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Thực
-                                hiện</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div><!-- End Comment Form -->
-
-        <div class="row pb-4">
-            <div class="worksingle-comment-body col-md-8 m-auto">
-                <div class="d-flex">
-                    <div>
-                        <img class="rounded-circle" src="{{ asset('user/assets/img/team-05.jpg') }}" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">John Doe</h5>
-                                <p class="text-muted light-300">10 mins ago</p>
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco.
-                            </div>
-                        </div>
-                    </div>
+        {{-- comment --}}
+        <div>
+            <div class="row justify-content-center">
+                <div class="worksingle-comment-heading col-8 m-auto pb-3">
+                    <h4 class="h5">Bình luận</h4>
                 </div>
             </div>
-        </div><!-- End Comment -->
+            <div class="row pb-4">
 
+                <div class="worksingle-comment-footer col-lg-8 m-auto">
+                    <form class="col-md-12 m-auto" method="POST" action="{{ url('comments') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                        <div class="form-group">
+                            <textarea class="form-control" name="content"></textarea>
+                            <input type=hidden name=post_id value="{{ $post->id }}" />
+                        </div>
+
+                        <div class="form-row pt-2">
+                            <div class="col-md-12 col-10 text-end">
+                                <button type="submit"
+                                    class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Thực
+                                    hiện</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- End Comment Form -->
+
+            @forelse ($post->comment as $item)
+                <div class="row pb-4">
+                    <div class="worksingle-comment-body col-md-8 m-auto">
+
+                        <div class="d-flex">
+
+                            <div>
+                                <img class="rounded-circle" src="{{ asset('user/assets/img/team-05.jpg') }}"
+                                    style="width: 50px;">
+                            </div>
+                            <div class="comment-body">
+
+
+                                <div class="comment-header d-flex justify-content-between ms-3">
+
+                                    <div class="header text-start">
+                                        <h5 class="h6">{{ $item->user->name }}</h5>
+
+                                        <p class="text-muted light-300">{{ $item->created_at->format('d-m-Y h-m') }}</p>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <div class="card-body border ms-3 light-300">
+                                        {{ $item->content }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+        </div><!-- End Comment -->
+    @empty
+        <h6>Không có bình luận</h6>
+        @endforelse
+        </div>
     </section>
 @endsection

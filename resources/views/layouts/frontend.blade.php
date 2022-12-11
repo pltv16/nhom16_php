@@ -67,7 +67,6 @@ https://templatemo.com/tm-561-purple-buzz
 
 
 
-
     <!-- Bootstrap -->
     <script src="{{ asset('user/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Load jQuery require for isotope -->
@@ -99,7 +98,7 @@ https://templatemo.com/tm-561-purple-buzz
     <script src="{{ asset('user/assets/js/templatemo.js') }}"></script>
     <!-- Custom -->
     <script src="{{ asset('user/assets/js/custom.js') }}"></script>
-
+    @yield('scripts')
 </body>
 
 </html>

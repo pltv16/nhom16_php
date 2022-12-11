@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $post = DB::table('posts')->where('deleted_at',null)->orderBy('created_at', 'DESC')
+        ->get();;
+        return view('frontend.index',compact('post'));
     }
 }

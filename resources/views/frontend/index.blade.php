@@ -8,14 +8,10 @@
                 <div class="col-md-12 text-left justify-content-center">
                     <div class="row gx-5">
 
-                        @php
-                            $post = DB::table('posts')->orderBy('created_at','DESC')->get();
-                        @endphp
-
                         @foreach ($post as $item)
                             <div class="col-sm-6 col-lg-4 mb-5">
                                 <a
-                                    href="{{ route('f-post', ['post' => $item->id]) }} "class="related-content card text-decoration-none overflow-hidden h-100">
+                                    href="{{ url('f-detail-post/' . $item->id) }} "class="related-content card text-decoration-none overflow-hidden h-100">
                                     <img class="related-img card-img-top" src="{{ asset('uploads/post/' . $item->image) }}"
                                         alt="Card image cap" style="object-fit:cover;">
                                     <div class="related-body card-body p-4">
@@ -23,8 +19,20 @@
                                         <div class="d-flex justify-content-between">
                                             <span class="text-primary light-300">Chi tiết</span>
                                             <div class="light-300">
-                                                <i class='bx-fw bx bx-heart me-1'></i>5
-                                                <i class='bx-fw bx bx-chat    ms-1 me-1'></i>3
+                                                <i class='bx-fw bx bx-heart me-1'></i>
+
+                                                <?php
+                                                $con = mysqli_connect('localhost', 'root', '', 'ngocbao');
+                                                $dash_comment_query = 'SELECT * from comments where post_id = 1';
+                                                $dash_comment_query_run = mysqli_query($con, $dash_comment_query);
+                                                
+                                                if ($comment_total = mysqli_num_rows($dash_comment_query_run)) {
+                                                    echo '<i class="bx-fw bx bx-chat    ms-1 me-1"></i> ' . $comment_total;
+                                                } else {
+                                                    echo '<h3 class="card-title mb-2"> No Data</h3>';
+                                                }
+                                                
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

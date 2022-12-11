@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class FPostController extends Controller
 {
-    public function post(Post $post)
+    public function detail($id)
     {
+        $post = Post::find($id);
         return view('frontend.post.detail', compact('post'));
     }
 
