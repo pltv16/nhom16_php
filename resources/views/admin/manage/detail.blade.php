@@ -1,8 +1,35 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="{{ url('admin/delete-post') }}" method="POST">
+            @csrf
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="post_id" name="post_delete_id">
+            <h5>Bạn có thật sự muốn xoá bài viết?</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+            <button type="submit" class="btn btn-danger">Xoá</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
+            <a href="{{ url('admin/edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
+            
+            <button type="button" class="btn btn-danger deletePostBtn"
+            value="{{ $post->id }}">Delete</button>
+
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
                     <h3 class="feature-work-title h4 text-muted light-300">{{ $post->user->name }}</h3>
@@ -100,4 +127,17 @@
         </div>
         <!-- End Comment -->
     </section>  
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.deletePostBtn').click(function(e) {
+                e.preventDefault();
+
+                var post_id = $(this).val();
+                $('#post_id').val(post_id);
+                $('#deleteModal').modal('show');
+            })
+        })
+    </script>
 @endsection

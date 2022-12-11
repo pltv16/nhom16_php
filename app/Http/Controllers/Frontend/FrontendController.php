@@ -10,7 +10,7 @@ class FrontendController extends Controller
     public function index()
     {
         $post = DB::table('posts')->where('deleted_at',null)->orderBy('created_at', 'DESC')
-        ->get();;
+        ->get();
         return view('frontend.index',compact('post'));
     }
 }
