@@ -27,12 +27,14 @@
 
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
-            
-
+            @if (Auth::user()->id==$post->created_by)
             <a href="{{ url('f-edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
             
             <button type="button" class="btn btn-danger deletePostBtn"
             value="{{ $post->id }}">Delete</button>
+@endif
+
+            
 
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
