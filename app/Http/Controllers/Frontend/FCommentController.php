@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FCommentController extends Controller
 {
+    // public function index()
+    // {
+    //     $comment = Comment::all();
+    //     return view('frontend.comment.index', compact('comment'));
+    // }
     public function store(Request $request)
     {   
         $request->validate([
