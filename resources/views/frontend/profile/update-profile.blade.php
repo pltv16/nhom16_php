@@ -46,11 +46,11 @@
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
 
-                        <form id="formAccountSettings" action="{{ route('f-update-profile') }}" method="POST">
+                        <form id="formAccountSettings" action="{{ route('f-update-profile') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                <img src="{{ asset('user/assets/img/avt.png') }}" alt="user-avatar" class="d-block rounded"
+                                <img src="{{ asset('uploads/avatar/'.Auth::user()->image) }}" alt="user-avatar" class="d-block rounded"
                                     height="100" width="100" id="uploadedAvatar" />
                                 <div class="card-body">
                                     <div class="row">
@@ -79,6 +79,14 @@
                                                     placeholder="202 555 0111" value="{{ auth()->user()->phone }}" />
                                             </div>
                                         </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label" for="image">Ảnh đại diện</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="file" id="image" name="image" class="form-control"
+                                                     value="{{ auth()->user()->image }}" />
+                                            </div>
+                                        </div>
+
                                         <p class="text-danger"><span class="error-message">{{ $errors->first('phone') }}</span></p>
                                     </div>
                                     <div class="mt-2">

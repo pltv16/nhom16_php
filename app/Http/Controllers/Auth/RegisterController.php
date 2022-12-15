@@ -30,10 +30,10 @@ class RegisterController extends Controller
             'password.min'=>'Mật khẩu tối thiểu 8 kí tự',
             'confirm-password.same' =>'Xác nhận mật khẩu không trùng khớp',
         ]);
-        if(User::where('email',$request->email))
-        {
-            return redirect()->route('show-form-register')->with('error','Email đã tồn tại');
-        }
+        // if(User::where('email',$request->email))
+        // {
+        //     return redirect()->route('show-form-register')->with('error','Email đã tồn tại');
+        // }
         $user = new User();
         $user->name = $request->name;
         

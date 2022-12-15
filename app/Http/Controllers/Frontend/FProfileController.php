@@ -33,7 +33,14 @@ class FProfileController extends Controller
         $user->name = $request->name;
         $user->address = $request->address;
         $user->phone = $request->phone;
-
+        $filename = null;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/avatar/', $filename);
+           
+        }       
+        $user->image=$filename;
         $user->save();
 
         return redirect()->route('f-show-form-profile')->with('success', 'Cập nhật thành công!');

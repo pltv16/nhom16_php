@@ -1,40 +1,39 @@
 @extends('layouts.frontend')
 
 @section('content')
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form action="{{ url('f-delete-post') }}" method="POST">
-            @csrf
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ url('f-delete-post') }}" method="POST">
+                    @csrf
 
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="post_id" name="post_delete_id">
+                        <h5>Bạn có thật sự muốn xoá bài viết?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                        <button type="submit" class="btn btn-danger">Xoá</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body">
-                <input type="hidden" id="post_id" name="post_delete_id">
-            <h5>Bạn có thật sự muốn xoá bài viết?</h5>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-            <button type="submit" class="btn btn-danger">Xoá</button>
-            </div>
-        </form>
-      </div>
+        </div>
+
     </div>
-
-</div>
 
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
-            @if (Auth::user()->id==$post->created_by)
-            <a href="{{ url('f-edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
-            
-            <button type="button" class="btn btn-danger deletePostBtn"
-            value="{{ $post->id }}">Delete</button>
-@endif
+            @if (Auth::user()->id == $post->created_by)
+                <a href="{{ url('f-edit-post/' . $post->id) }}" class="btn btn-primary">Chỉnh sửa</a>
 
-            
+                <button type="button" class="btn btn-danger deletePostBtn" value="{{ $post->id }}">Delete</button>
+            @endif
+
+
 
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
@@ -89,18 +88,17 @@
                 </div>
             </div><!-- End Comment Form -->
 
-                <div class="row pb-4">
-                    @forelse ($post->comment as $item)
-
+            <div class="row pb-4">
+                @forelse ($post->comment as $item)
                     <div class="worksingle-comment-body col-md-8 m-auto">
 
                         <div class="d-flex">
 
                             <div>
                                 <img class="rounded-circle" src="{{ asset('user/assets/img/team-05.jpg') }}"
-                                        style="width: 50px;">
-                                </div>
-                                <div class="comment-body">
+                                    style="width: 50px;">
+                            </div>
+                            <div class="comment-body">
 
 
                                 <div class="comment-header d-flex justify-content-between ms-3">
@@ -116,23 +114,27 @@
                                         {{ $item->content }}
                                     </div>
                                 </div>
+                                @if (Auth::user()->id == $item->user->id)
+                                    <a href="{{ route('f-delete-comment', ['id' => $item->id]) }}"
+                                        class="btn btn-primary btn-sm me-2">Xoá</a>
+                                @endif
                             </div>
 
                         </div>
-                        
+
                     </div>
-                    @empty
+                @empty
                     <h6>Không có bình luận</h6>
-                    @endforelse
-            
-                </div>
+                @endforelse
+
+            </div>
         </div>
-        
+
         </div>
-        
+
         </div>
         <!-- End Comment -->
-    </section>  
+    </section>
 @endsection
 @section('scripts')
     <script>
