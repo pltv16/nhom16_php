@@ -9,7 +9,7 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
             id="navbar-toggler-success">
             <div class="flex-fill mx-xl-5 mb-2">
@@ -43,6 +43,11 @@
 
                 </div>
                 <div class="navbar align-self-center d-flex">
+                    <a >
+                        <div class="avatar avatar-online">
+                            <img src="{{ asset('uploads/avatar/'.Auth::user()->image) }}" alt class="w-px-40 h-auto rounded-circle" style=" width: 50px" />
+                        </div>
+                    </a>
                     {{-- <li class="nav-item dropdown" id="drop-down-list"> --}}
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

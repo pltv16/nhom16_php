@@ -41,7 +41,7 @@
                     <!-- Account -->
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('user/assets/img/avt.png') }}" alt="user-avatar" class="d-block rounded"
+                            <img src="{{ asset('uploads/avatar/'.Auth::user()->image) }}" alt="user-avatar" class="d-block rounded"
                                 height="100" width="100" id="uploadedAvatar" />
                             <div class="card-body">
                                 <div class="row">
