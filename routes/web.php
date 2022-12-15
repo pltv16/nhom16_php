@@ -65,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
 
     //COMMENT
     Route::post('f-comment', [FCommentController::class,'store'])->name('f-comment');
+    Route::get('f-edit-comment/{id}', [FCommentController::class,'edit'])->name('f-edit-comment');
+    Route::put('f-update-comment/{id}', [FCommentController::class,'update'])->name('f-update-comment');
     Route::get('f-delete-comment/{id}', [FCommentController::class,'destroy'])->name('f-delete-comment');
 
 });

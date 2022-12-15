@@ -117,6 +117,8 @@
                                 @if (Auth::user()->id == $item->user->id)
                                     <a href="{{ route('f-delete-comment', ['id' => $item->id]) }}"
                                         class="btn btn-primary btn-sm me-2">Xoá</a>
+                                    <a href="{{ route('f-edit-comment', ['id' => $item->id]) }}"
+                                        class="btn btn-primary btn-sm me-2">Chỉnh sửa</a>
                                 @endif
                             </div>
 
