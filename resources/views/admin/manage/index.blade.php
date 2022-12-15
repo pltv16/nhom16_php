@@ -33,7 +33,7 @@
                         @foreach ($post as $item)
                             <div class="col-sm-6 col-lg-4 mb-5">
                                 <a
-                                    href="{{ url('admin/detail-post/' . $item->id) }} "class="related-content card text-decoration-none overflow-hidden h-100">
+                                    href="{{ url('admin/detail-manage-post/' . $item->id) }} "class="related-content card text-decoration-none overflow-hidden h-100">
                                     <img class="related-img card-img-top" src="{{ asset('uploads/post/' . $item->image) }}"
                                         alt="Card image cap" style="object-fit:cover;">
                                     <div class="related-body card-body p-4">

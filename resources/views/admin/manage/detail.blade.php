@@ -112,6 +112,10 @@
                                         {{ $item->content }}
                                     </div>
                                 </div>
+                                @if (Auth::user()->id == $item->user->id)
+                                <a href="{{ route('delete-comment', ['id' => $item->id]) }}"
+                                    class="btn btn-primary btn-sm me-2">Xoá</a>
+                            @endif
                             </div>
 
                         </div>

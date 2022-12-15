@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
 
     //MANAGE
     Route::get('f-post-manage', [FManageController::class,'index'])->name('f-post-manage');
-    Route::get('f-detail-post/{id}', [FManageController::class,'detail'])->name('detail-post');
+    Route::get('f-detail-manage-post/{id}', [FManageController::class,'detail'])->name('f-detail-manage-post');
 
     //POST
     Route::get('f-add-post', [FPostController::class,'create'])->name('f-add-post');
@@ -87,8 +87,9 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
     //COMMENT
     Route::get('comment', [CommentController::class,'index'])->name('comment');
-    //COMMENT
+    //COMMENT MANAGE
     Route::post('comment', [CommentController::class,'store'])->name('comment');
+    Route::get('delete-comment/{id}', [CommentController::class,'destroy'])->name('delete-comment');
 
     //CATEGORY
     Route::get('category', [CategoryController::class,'index'])->name('category');
@@ -108,6 +109,6 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
 
     //POST-MANAGE
     Route::get('post-manage',[ManageController::class,'index'])->name('post-manage');
-    Route::get('detail-post/{id}', [ManageController::class,'detail'])->name('detail-post');
+    Route::get('detail-manage-post/{id}', [ManageController::class,'detail'])->name('detail-manage-post');
 
 });

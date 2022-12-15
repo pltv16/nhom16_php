@@ -24,4 +24,10 @@ class CommentController extends Controller
 
         return redirect('admin/detail-post/'.$request->post_id)->with('success', 'Thêm bình luận thành công');
     }
+    public function destroy($id)
+    {
+        $comment=Comment::find($id);
+        $comment->delete();
+        return redirect()->back()->with('success','Xoá bình luận thành công');
+    }
 }
