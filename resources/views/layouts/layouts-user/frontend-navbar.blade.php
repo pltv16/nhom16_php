@@ -15,13 +15,18 @@
             <div class="flex-fill mx-xl-5 mb-2">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                     <!-- Search -->
+                    <form class="col-md-12 m-auto" method="GET" action="{{ route('f-search') }}"
+                    enctype="multipart/form-data">
                     <div class="navbar-nav align-items-center">
                         <div class="nav-item d-flex align-items-center">
                             <i class="bx bx-search fs-4 lh-0"></i>
-                            <input type="text" class="form-control border-0 shadow-none" placeholder="Tìm kiếm..."
-                                aria-label="Tìm kiếm..." />
+                            <input type="search" class="form-control border-0 shadow-none" placeholder="Tìm kiếm..."
+                                aria-label="Tìm kiếm..." name="search" id="search"/>
                         </div>
+                       <button class="btn btn-outline-primary" style="border-radius: 20px">Tìm kiếm</button>
+
                     </div>
+                    </form>
                     <!-- /Search -->
 
                     @guest

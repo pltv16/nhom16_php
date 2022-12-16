@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('f-edit-post/{id}', [FPostController::class,'edit'])->name('f-edit-post');
     Route::put('f-update-post/{id}', [FPostController::class,'update'])->name('f-update-post');
     Route::post('f-delete-post', [FPostController::class,'destroy'])->name('f-delete-post');
+    Route::get('f-search', [FrontendController::class,'search'])->name('f-search');
 
 
     //COMMENT
