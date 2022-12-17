@@ -13,7 +13,7 @@
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
             id="navbar-toggler-success">
             <div class="flex-fill mx-xl-5 mb-2">
-                <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                <ul class="navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                     <!-- Search -->
                     <form class="col-md-12 m-auto" method="GET" action="{{ route('f-search') }}"
                     enctype="multipart/form-data">
@@ -43,7 +43,8 @@
                                     href="{{ route('register') }}">Đăng Ký</a>
                             </li>
                         @endif
-                    @else
+@else</ul>
+                    
                     </ul>
 
                 </div>

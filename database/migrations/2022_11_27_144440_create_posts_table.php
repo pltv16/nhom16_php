@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->string('image')->nullable();
             $table->integer('created_by');
+            $table->integer('status')->default('1');
             $table->timestamps();
             $table->softDeletes();
         });
