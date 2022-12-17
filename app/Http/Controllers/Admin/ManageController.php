@@ -25,14 +25,14 @@ class ManageController extends Controller
         return view('admin.manage.detail', compact('post'));
     }
 
-    public function editmanage($id)
+    public function edit($id)
     {
         $category = Category::all();
         $post = Post::find($id);
         return view('admin.manage.edit', compact('post', 'category'));
     }
 
-    public function updatemanage(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate(
             [   
@@ -68,7 +68,7 @@ class ManageController extends Controller
     return view('admin.manage.trash',compact('post'));
    }
 
-   public function destroymanage($id)
+   public function destroy($id)
    {
        $post = Post::find($id);
            $post->delete();

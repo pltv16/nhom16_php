@@ -8,7 +8,7 @@
         <div class="card mt-4">
             <div class="card-header">
                 <h4 class="">Cập nhật bài viết
-                    <a href="{{ route('timdothatlac') }}" class="btn btn-danger float-end">Quay lại</a>
+                    <a href="{{ route('f-post-manage') }}" class="btn btn-danger float-end">Quay lại</a>
                 </h4>
 
             </div>
@@ -16,13 +16,12 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
             <div class="card-body">
-                <form action="{{ url('f-update-post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/update-post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
                         <label for="">Danh mục</label>
                         <select name="cate_id" class="form-control" required>
-                            <option value="">--Chọn danh mục--</option>
                             @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
@@ -31,9 +30,9 @@
                     <div class="mb-3">
                         <label for="">Loại bài viết</label>
                         <select name="typepost" class="form-control">
-                                <option value="1">Nhặt đồ</option>
-                                <option value="2">Mất đồ</option>
-                        </select>
+                            <option value="1">Nhặt đồ</option>
+                            <option value="2">Mất đồ</option>
+                    </select>
                     </div>
                     <div class="mb-3">
                         <label for="">Tiêu đề</label>

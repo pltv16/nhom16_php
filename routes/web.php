@@ -54,6 +54,13 @@ Route::middleware(['auth'])->group(function () {
     //MANAGE
     Route::get('f-post-manage', [FManageController::class,'index'])->name('f-post-manage');
     Route::get('f-detail-manage-post/{id}', [FManageController::class,'detail'])->name('f-detail-manage-post');
+    Route::get('f-post-manage-trash', [FManageController::class,'trash'])->name('f-post-manage-trash');
+    Route::get('f-delete-post-manage/{id}', [FManageController::class,'destroy'])->name('f-delete-post-manage');
+    Route::get('f-edit-post-manage/{id}', [FManageController::class,'edit'])->name('f-edit-post-manage');
+    Route::put('f-update-post-manage/{id}', [FManageController::class,'update'])->name('f-update-post-manage');
+    Route::get('f-post-trash', [FManageController::class,'trash'])->name('f-post-trash');
+    Route::get('f-post-untrash/{id}', [FManageController::class,'untrash'])->name('f-post-untrash');
+    Route::get('f-post-forcedel/{id}', [FManageController::class,'forcedel'])->name('f-post-forcedel');
 
     //POST
     Route::get('f-add-post', [FPostController::class,'create'])->name('f-add-post');
@@ -121,8 +128,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::get('post-manage',[ManageController::class,'index'])->name('post-manage');
     Route::get('detail-manage-post/{id}', [ManageController::class,'detail'])->name('detail-manage-post');
     Route::get('post-manage-trash', [ManageController::class,'trash'])->name('post-manage-trash');
-    Route::get('delete-post-manage/{id}', [ManageController::class,'destroymanage'])->name('delete-post-manage');
-    Route::get('edit-post-manage/{id}', [ManageController::class,'editmanage'])->name('edit-post-manage');
-    Route::put('update-post-manage/{id}', [ManageController::class,'updatemanage'])->name('update-post-manage');
+    Route::get('delete-post-manage/{id}', [ManageController::class,'destroy'])->name('delete-post-manage');
+    Route::get('edit-post-manage/{id}', [ManageController::class,'edit'])->name('edit-post-manage');
+    Route::put('update-post-manage/{id}', [ManageController::class,'update'])->name('update-post-manage');
 
 });
