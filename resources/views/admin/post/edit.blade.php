@@ -22,11 +22,17 @@
                     <div class="mb-3">
                         <label for="">Danh mục</label>
                         <select name="cate_id" class="form-control" required>
-                            <option value="">--Chọn danh mục--</option>
                             @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Loại bài viết</label>
+                        <select name="typepost" class="form-control">
+                            <option value="1">Nhặt đồ</option>
+                            <option value="2">Mất đồ</option>
+                    </select>
                     </div>
                     <div class="mb-3">
                         <label for="">Tiêu đề</label>

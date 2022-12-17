@@ -22,7 +22,7 @@ class CommentController extends Controller
         $comment->content = $request->content;
         $comment->save();
 
-        return redirect('admin/detail-post/'.$request->post_id)->with('success', 'Thêm bình luận thành công');
+        return redirect('admin/detail-manage-post/'.$request->post_id)->with('success', 'Thêm bình luận thành công');
     }
     public function destroy($id)
     {

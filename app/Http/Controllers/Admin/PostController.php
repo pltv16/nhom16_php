@@ -42,6 +42,7 @@ class PostController extends Controller
         }
         Post::create([
             'cate_id' => $request->cate_id,
+            'typepost' => $request->typepost,
             'title' => $request->title,
             'content' => $request->content,
             'created_by' => Auth::user()->id,
@@ -61,18 +62,17 @@ class PostController extends Controller
     {
         $request->validate(
             [   
-                'cate_id'=>['required'],
                 'title' => ['required'],
                 'content' => ['required'],
             ],
             [   
-                'cate_id'=>'Hãy chọn danh mục bài viết',
                 'title.required' => 'Hãy nhập tên tiêu đề',
                 'content.required' => 'Hãy nhập nội dung',
             ],
         );
         $post = Post::find($id);
         $post->cate_id = $request->cate_id;
+        $post->typepost = $request->typepost;
         $post->title = $request->title;
         $post->content = $request->content;
         $post->created_by = Auth::user()->id;

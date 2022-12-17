@@ -25,6 +25,13 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="">Loại bài viết</label>
+                        <select name="typepost" class="form-control">
+                                <option value="1">Nhặt đồ</option>
+                                <option value="2">Mất đồ</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="">Tiêu đề</label>
                         <input type="text" name="title" class="form-control" />
                     </div>

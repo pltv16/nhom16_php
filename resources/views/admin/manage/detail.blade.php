@@ -33,10 +33,15 @@
             value="{{ $post->id }}">Delete</button>
 
             <div class="row d-flex d-flex align-items-center">
+                <h6 class="feature-work-title h4 text-muted light-300">Loại tin: {{ $post->typepost == '1' ? 'Nhặt đồ' : 'Mất đồ'}}</h6>
+                <h1 class="feature-work-heading h2 py-3 semi-bold-600">{{ $post->title }}</h1>
+
                 <div class="col-lg-5">
+
+                    <img  src="{{ asset('uploads/avatar/' . $post->user->image) }}" alt="user-avatar" class="d-block rounded"
+                    height="100" width="100" id="uploadedAvatar">
                     <h3 class="feature-work-title h4 text-muted light-300">{{ $post->user->name }}</h3>
-                    <h1 class="feature-work-heading h2 py-3 semi-bold-600">{{ $post->title }}</h1>
-                    <p class="feature-work-body text-muted light-300">
+                    <p class="feature-work-body text-muted " style="font-size: 30px">
                         {{ $post->content }}
                     </p>
                 </div>
@@ -47,9 +52,12 @@
                             <img class="img-fluid" src="{{ asset('uploads/post/' . $post->image) }}" alt="Card image cap"
                                 style="object-fit:cover;">
                         </a>
-
+    
                     </div>
                 </div>
+                <p class="feature-work-body text-muted light-300" style="font-size: 15px">Đã đăng lúc: {{ $post->created_at->format('h:i')}}</p>
+                <p class="feature-work-body text-muted light-300" style="font-size: 15px">Ngày {{ $post->created_at->format('d')}} tháng {{ $post->created_at->format('m')}} năm {{ $post->created_at->format('Y')}}</p>
+
             </div>
 
         </div>
@@ -93,7 +101,7 @@
                         <div class="d-flex">
 
                             <div>
-                                <img class="rounded-circle" src="{{ asset('user/assets/img/team-05.jpg') }}"
+                                <img class="rounded-circle" src="{{ asset('uploads/avatar/' . $post->user->image) }}"
                                         style="width: 50px;">
                                 </div>
                                 <div class="comment-body">
@@ -113,9 +121,11 @@
                                     </div>
                                 </div>
                                 @if (Auth::user()->id == $item->user->id)
-                                <a href="{{ route('delete-comment', ['id' => $item->id]) }}"
-                                    class="btn btn-primary btn-sm me-2">Xoá</a>
-                            @endif
+                                    <a href="{{ route('f-delete-comment', ['id' => $item->id]) }}"
+                                        class="btn btn-primary btn-sm me-2">Xoá</a>
+                                    <a href="{{ route('f-edit-comment', ['id' => $item->id]) }}"
+                                        class="btn btn-primary btn-sm me-2">Chỉnh sửa</a>
+                                @endif
                             </div>
 
                         </div>

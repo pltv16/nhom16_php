@@ -13,7 +13,8 @@ class ManageController extends Controller
 {
     public function index()
     {
-        $post = DB::table('posts')->where(['created_by' => Auth::user()->id, 'deleted_at' =>null])->get();
+        $post = DB::table('posts')->where(['created_by' => Auth::user()->id, 'deleted_at' =>null])
+        ->orderBy('created_at', 'DESC')->get();        
         return view('admin.manage.index',compact('post'));
     }
 

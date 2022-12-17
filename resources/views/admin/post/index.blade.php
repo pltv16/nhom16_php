@@ -48,6 +48,7 @@
                             <td>ID</td>
                             <td>Hình ảnh</td>
                             <td>Danh mục</td>
+                            <td>Loại bài viết</td>
                             <td>Tiêu đề</td>
                             <td>Nội dung</td>
                             <td>Tác giả</td>
@@ -62,6 +63,7 @@
                                 <td><img src="{{ asset('uploads/post/' . $item->image) }}" alt=""
                                         style="width: 150px; height:150px; object-fit:cover;"></td>
                                 <td>{{ $item->category->name }}</td>
+                                <td>{{ $item->typepost}}</td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->content }}</td>
 

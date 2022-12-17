@@ -18,7 +18,7 @@ class Post extends Model
         'content',
         'image',
         'created_by',
-
+        'typepost',
     ];
     public function category()
     {
