@@ -26,10 +26,13 @@
     <article class="container-fluid bg-light">
         <div class="container">
             <div class="worksingle-related-header row">
-                <h1 class="h2 py-5">Bài viết</h1>
+                <h1 class="h2 py-5">Bài viết
+                    <a href="{{ route('post-manage-trash') }}" class="float-end "><button class="btn btn-danger" style="margin-right: 25px">Thùng rác</button></a>
+                </h1>
                 <div class="col-md-12 text-left justify-content-center">
                     <div class="row gx-5">
-
+                        
+            
                         @foreach ($post as $item)
                             <div class="col-sm-6 col-lg-4 mb-5">
                                 <a

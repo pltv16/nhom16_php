@@ -4,16 +4,11 @@
 
 @section('content')
     <div class="container-fluid px-4">
-
         <div class="card mt-4">
-
             <div class="card-header">
-                <h4>Bài viết
-                    <a href="{{ route('add-post') }}" class="btn btn-primary float-end">Thêm bài viết</a>
+                <h4>Thùng rác
+                    <a href="{{ route('post') }}"><button class="btn btn-primary btn-sm float-end">Quay lại</button></a>
                 </h4>
-            </div>
-            <div > 
-                <a href="{{ route('post-trash') }}" class="float-end "><button class="btn btn-danger" style="margin-right: 25px">Thùng rác</button></a>
             </div>
             <div class="card-body">
 
@@ -31,8 +26,8 @@
                             <td>Tiêu đề</td>
                             <td>Nội dung</td>
                             <td>Tác giả</td>
-                            <td>Chỉnh sửa</td>
-                            <td>Xoá</td>
+                            <td>Khôi phục</td>
+                            <td>Xoá vĩnh viễn</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,12 +43,10 @@
 
                                 <td>{{ $item->user->name }}</td>
                                 <td>
-                                    <a href="{{ url('admin/edit-post/' . $item->id) }}" class="btn btn-primary">Chỉnh
-                                        sửa</a>
-
+                                    <a href="{{ url('admin/post-untrash/' . $item->id) }}" class="btn btn-success">Khôi phục</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/delete-post/' . $item->id) }}" class="btn btn-danger">Xoá</a>
+                                    <a href="{{ url('admin/post-forcedel/' . $item->id) }}" class="btn btn-danger">Xoá vĩnh viễn</a>
                                 </td>
                             </tr>
                         @endforeach

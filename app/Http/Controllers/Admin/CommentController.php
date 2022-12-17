@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,28 @@ class CommentController extends Controller
 
         return redirect('admin/detail-manage-post/'.$request->post_id)->with('success', 'Thêm bình luận thành công');
     }
+
+    public function edit($id)
+    {
+        $post=Post::find($id);
+        $comment=Comment::find($id);
+        return view('admin.comment.edit', compact('post', 'comment'));
+    }
+    public function update(Request $request, $id)
+    {   
+        $request->validate([
+            'content'=>['required'],
+        ],
+        ['content.required'=>'Hãy nhập nội dung bình luận']
+        );
+        $comment = Comment::find($id);
+        $comment->user_id = Auth::user()->id;
+        $comment->content = $request->content;
+        $comment->update();
+
+        return redirect('admin/detail-manage-post/'.$comment->post_id)->with('success', 'Sửa bình luận thành công');
+    }
+
     public function destroy($id)
     {
         $comment=Comment::find($id);

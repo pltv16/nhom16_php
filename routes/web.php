@@ -93,6 +93,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     //COMMENT MANAGE
     Route::post('comment', [CommentController::class,'store'])->name('comment');
     Route::get('delete-comment/{id}', [CommentController::class,'destroy'])->name('delete-comment');
+    Route::get('edit-comment/{id}', [CommentController::class,'edit'])->name('edit-comment');
+    Route::put('update-comment/{id}', [CommentController::class,'update'])->name('update-comment');
 
     //CATEGORY
     Route::get('category', [CategoryController::class,'index'])->name('category');
@@ -100,18 +102,27 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
     Route::post('add-category', [CategoryController::class,'store'])->name('add-category');
     Route::get('edit-category/{id}', [CategoryController::class,'edit'])->name('edit-category');
     Route::put('update-category/{id}', [CategoryController::class,'update'])->name('update-category');
-    Route::post('delete-category', [CategoryController::class,'destroy'])->name('delete-category');
-    
+    Route::get('delete-category/{id}', [CategoryController::class,'destroy'])->name('delete-category');
+    Route::get('category-trash', [CategoryController::class,'trash'])->name('category-trash');
+    Route::get('category-untrash/{id}', [CategoryController::class,'untrash'])->name('category-untrash');
+    Route::get('category-forcedel/{id}', [CategoryController::class,'forcedel'])->name('category-forcedel');
     //POST
     Route::get('post', [PostController::class,'index'])->name('post');
     Route::get('add-post', [PostController::class,'create'])->name('add-post');
     Route::post('add-post', [PostController::class,'store'])->name('add-post');
     Route::get('edit-post/{id}', [PostController::class,'edit'])->name('edit-post');
     Route::put('update-post/{id}', [PostController::class,'update'])->name('update-post');
-    Route::post('delete-post', [PostController::class,'destroy'])->name('delete-post');
+    Route::get('delete-post/{id}', [PostController::class,'destroy'])->name('delete-post');
+    Route::get('post-trash', [PostController::class,'trash'])->name('post-trash');
+    Route::get('post-untrash/{id}', [PostController::class,'untrash'])->name('post-untrash');
+    Route::get('post-forcedel/{id}', [PostController::class,'forcedel'])->name('post-forcedel');
 
     //POST-MANAGE
     Route::get('post-manage',[ManageController::class,'index'])->name('post-manage');
     Route::get('detail-manage-post/{id}', [ManageController::class,'detail'])->name('detail-manage-post');
+    Route::get('post-manage-trash', [ManageController::class,'trash'])->name('post-manage-trash');
+    Route::get('delete-post-manage/{id}', [ManageController::class,'destroymanage'])->name('delete-post-manage');
+    Route::get('edit-post-manage/{id}', [ManageController::class,'editmanage'])->name('edit-post-manage');
+    Route::put('update-post-manage/{id}', [ManageController::class,'updatemanage'])->name('update-post-manage');
 
 });

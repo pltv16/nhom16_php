@@ -85,19 +85,36 @@ class PostController extends Controller
 
         $post->update();
 
-        return redirect('admin/post')->with('message', 'Cập nhật bài viết thành công');
+        return redirect()->back()->with('success','Chỉnh sửa bài viết thành công');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $post = Post::find($request->post_delete_id);
-        if ($request->post_delete_id) {
+        $post = Post::find($id);
             $post->delete();
-            return redirect('admin/post')->with('message', 'Xoá bài viết thành công!');
-        } else {
-            return redirect('admin/post')->with('message', 'Bài viết không tồn tại');
-        }
+            return redirect()->back()->with('success','Xoá bài viết thành công');
     }
 
+    public function trash()
+    {
+        $post = Post::onlyTrashed()->get();
+        return view('admin.post.trash',compact('post'));
+    }
+
+    public function untrash($id)
+    {
+        $post =Post::withTrashed()-> find($id);
+        $post->restore();
+        return redirect()->back()->with('success','Khôi phục bài viết thành công');
+
+    }
+
+    public function forcedel($id)
+    {
+        $post =Post::withTrashed()-> find($id);
+        $post->forceDelete();
+        return redirect()->back()->with('success','Xoá vĩnh viễn bài viết thành công');
+
+    }
    
 }
