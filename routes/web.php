@@ -28,6 +28,11 @@ Route::get('/timdothatlac', [FrontendController::class,'index'])->name('timdotha
 //POST
 Route::get('f-detail-post/{id}', [FPostController::class,'detail'])->name('f-detail-post');
 
+//Pickup Post
+Route::get('f-pickup-post',[FrontendController::class,'pickup'])->name('f-pickup-post');
+
+//LOST
+Route::get('f-lost-post',[FrontendController::class,'lost'])->name('f-lost-post');
 
 //REGISTER
 Route::get('register', [RegisterController::class,'showFormRegister'])->name('show-form-register')->middleware('guest');

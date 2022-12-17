@@ -15,7 +15,10 @@
                                     <img class="related-img card-img-top" src="{{ asset('uploads/post/' . $item->image) }}"
                                         alt="Card image cap" style="object-fit:cover;">
                                     <div class="related-body card-body p-4">
+                                        <h6 >{{ $item->typepost == '1' ? 'Nhặt đồ' : 'Mất đồ'}}</h6>
+                                       
                                         <h5 class="card-title h6 m-0 semi-bold-600 text-dark">{{ $item->title }}</h5>
+                                        
                                         <div class="d-flex justify-content-between">
                                             <span class="text-primary light-300">Chi tiết</span>
                                           

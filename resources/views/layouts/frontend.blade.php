@@ -47,12 +47,12 @@ https://templatemo.com/tm-561-purple-buzz
                             data-filter=".ui">Bài viết</a>
                     </li> --}}
                     <li class="nav-item mx-lg-4">
-                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
-                            data-filter=".branding">Mẹo tìm đồ</a>
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('f-pickup-post') }}"
+                            data-filter=".branding">Nhặt đồ</a>
                     </li>
                     <li class="nav-item mx-lg-4">
-                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#"
-                            data-filter=".branding">Danh sách lừa đảo</a>
+                        <a class=" nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="{{ route('f-lost-post') }}"
+                            data-filter=".branding">Mất đồ</a>
                     </li>
                 </ul>
             </div>
