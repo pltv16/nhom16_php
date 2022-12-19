@@ -79,7 +79,7 @@
                         <div class="d-flex">
 
                             <div>
-                                <img class="rounded-circle" src="{{ asset('uploads/avatar/' . $post->user->image) }}"
+                                <img class="rounded-circle" src="{{ asset('uploads/avatar/' . $item->user->image) }}"
                                     style="width: 50px;">
                             </div>
                             <div class="comment-body">

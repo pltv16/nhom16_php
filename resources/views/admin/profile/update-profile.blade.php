@@ -82,7 +82,7 @@
                                         <label class="form-label" for="image">Ảnh đại diện</label>
                                         <div class="input-group input-group-merge">
                                             <input type="file" id="image" name="image" class="form-control"
-                                                 value="{{ auth()->user()->image }}" />
+                                                  value="{{ Auth::user()->image }}"/>
                                         </div>
                                     </div>
 
